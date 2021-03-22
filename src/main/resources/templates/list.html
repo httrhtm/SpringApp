@@ -14,7 +14,7 @@
 			<input type="submit" value="logout" />
 		</form>
 	</div>
-	
+
 	<!-- 新規登録ボタン -->
 	<div class="registerBtn">
 		<form method="post" th:action="@{/register}">
@@ -23,34 +23,34 @@
 	</div>
 
 	<!-- 問題 -->
-	<div class="inputQuestion">
+	<div class="question">
+	<div th:each="question:${questionList}" th:object="${question}">
 		問題：
 		<!-- 問題番号 -->
-		<p></p>
+		<p th:text="${id}"></p>
 
 		<!-- 問題 -->
-		<P></P>
+		<p th:text="${question}"></p>
 		<!-- 編集ボタン -->
 		<form method="post" th:action="@{/edit}">
-			<input type="hidden" name="questionId" value="" /> 
+			<input type="hidden" name="id" th:text="*{id}" />
 			<input type="submit" value="編集" />
 		</form>
 
 		<!-- 削除ボタン -->
 		<form method="post" th:action="@{/delete}">
-			<input type="hidden" name="questionId" value=""/> 
+			<input type="hidden" name="questionId" value=""/>
 			<input type="submit" value="削除"/>
 		</form>
 	</div>
+	</div>
 
 	<!-- 回答 -->
-	<div class="input-answer">
-		<p>
+	<div class="answer">
 			答え：
 			<!-- 答え -->
 			<p></p>
-		</p>
 	</div>
-	
+
 </body>
 </html>
