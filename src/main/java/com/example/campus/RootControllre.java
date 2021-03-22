@@ -9,25 +9,33 @@ import org.springframework.web.bind.annotation.RequestMapping;
 //システムに対して最初にアクセスがあったときに処理するコントローラー
 public class RootControllre {
 
-	//リクエストを処理するメソッド
+	//rootにアクセスがあった時はindex.htmlを表示する
 	@RequestMapping("/")
-	//rootにアクセスがあった時はindexを表示する
 	public String root() {
-		return "index";
+		return "login";
 	}
 
-	@PostMapping("/index") //postで送信されたリクエストを処理
-	public String index() {
-		return "index";
-	}
+	//index
+//	@PostMapping("/index")
+//	public String index() {
+//		return "index";
+//	}
 
-	@GetMapping("/login") //getで送信されたリクエストを処理
+	//login
+	@GetMapping("/login")
 	public String login() {
 		return "login";
 	}
 
-	@GetMapping("/top") //postで送信されたリクエストを処理
+	//top
+	@GetMapping("/top")
 	public String top() {
 		return "top";
+	}
+
+	//list
+	@PostMapping("/list")
+	public String list() {
+		return "list";
 	}
 }
