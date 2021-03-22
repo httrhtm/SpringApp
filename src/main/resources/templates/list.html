@@ -5,12 +5,12 @@
 <title>list</title>
 </head>
 <body>
-<!-- top, logoutボタン -->
+	<!-- top, logoutボタン -->
 	<div class="nav">
-		<form method="post" th:action="@{/top}">
+		<form method="post" th:action="@{/top}" style="display: inline" >
 			<input type="submit" value="top" />
 		</form>
-		<form method="post" th:action="@{/logout}">
+		<form method="post" th:action="@{/logout}" style="display: inline">
 			<input type="submit" value="logout" />
 		</form>
 	</div>
@@ -23,34 +23,32 @@
 	</div>
 
 	<!-- 問題 -->
-	<div class="question">
-	<div th:each="question:${questionList}" th:object="${question}">
-		問題：
-		<!-- 問題番号 -->
-		<p th:text="${id}"></p>
+	<div th:each="question:${questionList}">
+		<div class="question">
+			問題：
+			<!-- 問題番号 -->
+			<span th:text="${question.id}"></span>
+			<!-- 問題 -->
+			<span th:text="${question.question}"></span>
+			<!-- 編集ボタン -->
+			<form method="post" th:action="@{/edit}" style="display: inline">
+				<input type="hidden" name="id" th:text="*{id}" />
+				<input type="submit" value="編集" />
+			</form>
 
-		<!-- 問題 -->
-		<p th:text="${question}"></p>
-		<!-- 編集ボタン -->
-		<form method="post" th:action="@{/edit}">
-			<input type="hidden" name="id" th:text="*{id}" />
-			<input type="submit" value="編集" />
-		</form>
+			<!-- 削除ボタン -->
+			<form method="post" th:action="@{/delete}" style="display: inline">
+				<input type="hidden" name="questionId" value="" />
+				<input type="submit" value="削除" />
+			</form>
+		</div>
 
-		<!-- 削除ボタン -->
-		<form method="post" th:action="@{/delete}">
-			<input type="hidden" name="questionId" value=""/>
-			<input type="submit" value="削除"/>
-		</form>
-	</div>
-	</div>
-
-	<!-- 回答 -->
-	<div class="answer">
+		<!-- 回答 -->
+		<div class="answer">
 			答え：
 			<!-- 答え -->
-			<p></p>
+			<span></span>
+		</div>
 	</div>
-
 </body>
 </html>

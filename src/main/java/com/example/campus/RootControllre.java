@@ -48,14 +48,14 @@ public class RootControllre {
 
 	//list Get
     @Autowired
-    QuestionService questionService;
+    private QuestionService questionService;
 
     @GetMapping("/list")
     public String getList(Model model) {
 
     	//@Autowiredで作成したインスタンスを元に、questionServiceのメソッドを呼び出す。
         List<Question> questionList = questionService.findAll();
-        //userServiceから受け取ったデータをView側に渡す。
+        //questionServiceから受け取ったデータをView側に渡す。
         model.addAttribute("questionList", questionList);
         return "list";
     }
