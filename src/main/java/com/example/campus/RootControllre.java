@@ -25,4 +25,9 @@ public class RootControllre {
 	public String login() {
 		return "login";
 	}
+
+	@GetMapping("/top") //postで送信されたリクエストを処理
+	public String top() {
+		return "top";
+	}
 }
