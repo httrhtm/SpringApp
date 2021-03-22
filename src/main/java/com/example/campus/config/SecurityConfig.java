@@ -33,7 +33,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.formLogin()
 				.loginPage("/login")//htmlファイルではない。あくまでリクエストURL
 				.usernameParameter("id").permitAll()
-				.passwordParameter("password").permitAll();
+				.passwordParameter("password").permitAll()
+				.defaultSuccessUrl("/top");
 		}
 
 	@Bean //@Beanをつけることであらゆる場所から呼び出せるようにする

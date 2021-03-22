@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>top</title>
+</head>
+<body>
+	<!-- nav -->
+	<div class="nav">
+		<form action="LogoutServlet" method="post">
+			<input type="submit" value="logout">
+		</form>
+	</div>
+	<!-- menu -->
+	<div class="menu">
+		<!-- 問題一覧へ遷移 -->
+		<form method="post" th:action="@{/list}">
+			<input type="submit" value="問題と答えを確認・登録する ＞" />
+		</form>
+		<!-- テストへ遷移 -->
+		<form method="post" th:action="@{/test}">
+			<input type="submit" value="テストをする ＞" />
+		</form>
+		<!-- 採点結果履歴に遷移 -->
+		<form method="post" th:action="@{/history}">
+			<input type="submit" value="過去の採点結果をみる ＞" />
+		</form>
+	</div>
+</body>
+</html>
