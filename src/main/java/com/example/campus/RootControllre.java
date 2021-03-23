@@ -1,33 +1,65 @@
 package com.example.campus;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.example.campus.model.QuestionService;
 
 @Controller
 //システムに対して最初にアクセスがあったときに処理するコントローラー
 public class RootControllre {
 
-	//リクエストを処理するメソッド
+	//rootにアクセスがあった時はindex.htmlを表示する
 	@RequestMapping("/")
-	//rootにアクセスがあった時はindexを表示する
 	public String root() {
-		return "index";
+		return "login";
 	}
 
-	@PostMapping("/index") //postで送信されたリクエストを処理
-	public String index() {
-		return "index";
-	}
+	//index
+//	@PostMapping("/index")
+//	public String index() {
+//		return "index";
+//	}
 
-	@GetMapping("/login") //getで送信されたリクエストを処理
+	//login Get
+	@GetMapping("/login")
 	public String login() {
 		return "login";
 	}
 
-	@GetMapping("/top") //postで送信されたリクエストを処理
+	//top Get
+	@GetMapping("/top")
 	public String top() {
 		return "top";
 	}
+
+	//top Post
+	@PostMapping("/top")
+	public String postTop() {
+		return "top";
+	}
+
+	//list Get
+    @Autowired
+    private QuestionService questionService;
+
+    @GetMapping("/list")
+    public String getList(Model model) {
+        //questionServiceから受け取ったデータをView側に渡す。
+        model.addAttribute("questionList", questionService.findAll());
+        return "list";
+    }
+
+	//list Post
+	@PostMapping("/list")
+	public String postList(Model model) {
+		//questionServiceから受け取ったデータをView側に渡す。
+        model.addAttribute("questionList", questionService.findAll());
+		return "list";
+	}
+
 }

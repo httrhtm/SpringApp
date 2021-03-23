@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>list</title>
+</head>
+<body>
+	<!-- top, logoutボタン -->
+	<div class="nav">
+		<form method="post" th:action="@{/top}" style="display: inline" >
+			<input type="submit" value="top" />
+		</form>
+		<form method="post" th:action="@{/logout}" style="display: inline">
+			<input type="submit" value="logout" />
+		</form>
+	</div>
+
+	<!-- 新規登録ボタン -->
+	<div class="registerBtn">
+		<form method="post" th:action="@{/register}">
+			<input type="submit" value="新規登録" />
+		</form>
+	</div>
+
+	<!-- 問題 -->
+	<div th:each="question:${questionList}">
+		<div class="question">
+			問題：
+			<!-- 問題番号 -->
+			<span th:text="${question.id}"></span>
+			<!-- 問題 -->
+			<span th:text="${question.question}"></span>
+			<!-- 編集ボタン -->
+			<form method="post" th:action="@{/edit}" style="display: inline">
+				<input type="hidden" name="id" th:text="*{id}" />
+				<input type="submit" value="編集" />
+			</form>
+
+			<!-- 削除ボタン -->
+			<form method="post" th:action="@{/delete}" style="display: inline">
+				<input type="hidden" name="questionId" value="" />
+				<input type="submit" value="削除" />
+			</form>
+		</div>
+
+		<!-- 回答 -->
+		<div class="answer">
+			答え：
+			<!-- 答え -->
+			<span></span>
+		</div>
+	</div>
+</body>
+</html>
