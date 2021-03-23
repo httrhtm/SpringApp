@@ -4,7 +4,7 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- namespace：mapperインターフェースのパッケージ付きクラス名を指定 -->
-<mapper namespace="com.example.campus.auth.UserRepository">
+<mapper namespace="com.example.campus.repository.UserRepository">
 
 	<!--今回利用するステートメントの定義 -->
 	<select id = "identifyUser" parameterType="java.lang.String" resultMap="userDetails">
@@ -20,7 +20,7 @@
 	type属性にはメソッドの戻り値を指定する＝Userクラス（UserDetails インターフェースの実装クラス）
 	id属性は任意。selectで使う。
 	-->
-	<resultMap type="com.example.campus.auth.User" id ="userDetails">
+	<resultMap type="com.example.campus.entity.User" id ="userDetails">
 		<result property="id" column="id" />
 		<result property="password" column="password" />
 	</resultMap>

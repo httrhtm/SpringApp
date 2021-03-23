@@ -1,4 +1,4 @@
-package com.example.campus.model;
+package com.example.campus.entity;
 
 
 //entityクラス

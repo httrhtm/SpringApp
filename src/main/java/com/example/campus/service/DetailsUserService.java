@@ -1,10 +1,13 @@
-package com.example.campus.auth;
+package com.example.campus.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import com.example.campus.entity.User;
+import com.example.campus.repository.UserRepository;
 
 @Service //SpringのDIコンテナの管理対象であることを示す
 public class DetailsUserService implements UserDetailsService {
