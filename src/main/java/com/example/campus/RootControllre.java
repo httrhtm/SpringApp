@@ -1,7 +1,5 @@
 package com.example.campus;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.campus.model.Question;
 import com.example.campus.model.QuestionService;
 
 @Controller
@@ -52,17 +49,16 @@ public class RootControllre {
 
     @GetMapping("/list")
     public String getList(Model model) {
-
-    	//@Autowiredで作成したインスタンスを元に、questionServiceのメソッドを呼び出す。
-        List<Question> questionList = questionService.findAll();
         //questionServiceから受け取ったデータをView側に渡す。
-        model.addAttribute("questionList", questionList);
+        model.addAttribute("questionList", questionService.findAll());
         return "list";
     }
 
 	//list Post
 	@PostMapping("/list")
-	public String postList() {
+	public String postList(Model model) {
+		//questionServiceから受け取ったデータをView側に渡す。
+        model.addAttribute("questionList", questionService.findAll());
 		return "list";
 	}
 
