@@ -7,7 +7,7 @@
 <body>
 	<!-- top, logoutボタン -->
 	<div class="nav">
-		<form method="post" th:action="@{/top}" style="display: inline" >
+		<form method="post" th:action="@{/top}" style="display: inline">
 			<input type="submit" value="top" />
 		</form>
 		<form method="post" th:action="@{/logout}" style="display: inline">
@@ -32,22 +32,26 @@
 			<span th:text="${question.question}"></span>
 			<!-- 編集ボタン -->
 			<form method="post" th:action="@{/edit}" style="display: inline">
-				<input type="hidden" name="id" th:text="*{id}" />
-				<input type="submit" value="編集" />
+				<input type="hidden" name="id" th:text="*{id}" /> <input
+					type="submit" value="編集" />
 			</form>
 
 			<!-- 削除ボタン -->
 			<form method="post" th:action="@{/delete}" style="display: inline">
-				<input type="hidden" name="questionId" value="" />
-				<input type="submit" value="削除" />
+				<input type="hidden" name="questionId" value="" /> <input
+					type="submit" value="削除" />
 			</form>
 		</div>
 
 		<!-- 回答 -->
-		<div class="answer">
-			答え：
-			<!-- 答え -->
-			<span></span>
+		<div th:each="answer:${answerList}">
+			<div th:if="${answer.questions_id == question.id}">
+				<div class="answer">
+					答え：
+					<!-- 答え -->
+					<span th:text="${answer.answer}"></span>
+				</div>
+			</div>
 		</div>
 	</div>
 </body>

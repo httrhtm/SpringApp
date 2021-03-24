@@ -1,16 +1,22 @@
-package com.example.campus.model;
+package com.example.campus.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service //SpringのDIコンテナの管理対象であることを示す
-public class QuestionService {
-	@Autowired //依存性注入の対象であることを示す、QuestionRepositoryのインスタンス化をDIコンテナが勝手にやってくれる
-	private QuestionRepository questionRepository;
+import com.example.campus.entity.Answer;
+import com.example.campus.repository.AnswerRepository;
 
-	public List<Question> findAll() {
-		return questionRepository.findAll();
+
+
+@Service //SpringのDIコンテナの管理対象であることを示す
+public class AnswerService {
+	@Autowired //依存性注入の対象であることを示す、QuestionRepositoryのインスタンス化をDIコンテナが勝手にやってくれる
+	private AnswerRepository answerRepository;
+
+	public List<Answer> findAll() {
+		return answerRepository.findAll();
 	}
+
 }

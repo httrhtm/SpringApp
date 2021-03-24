@@ -1,4 +1,4 @@
-package com.example.campus.auth;
+package com.example.campus.entity;
 
 import java.util.Collection;
 

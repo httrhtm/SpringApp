@@ -1,6 +1,8 @@
-package com.example.campus.auth;
+package com.example.campus.repository;
 
 import org.apache.ibatis.annotations.Mapper;
+
+import com.example.campus.entity.User;
 
 @Mapper
 public interface UserRepository {

@@ -4,9 +4,9 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- namespace：mapperインターフェースのパッケージ付きクラス名を指定 -->
-<mapper namespace="com.example.campus.model.QuestionRepository">
+<mapper namespace="com.example.campus.repository.AnswerRepository">
 	<!-- 全件取得 -->
-	<select id="findAll" parameterType="com.example.campus.model.Question" resultType="com.example.campus.model.Question">
-		select * from questions
+	<select id="findAll" resultType="com.example.campus.entity.Answer">
+		select * from correct_answers
 	</select>
 </mapper>
