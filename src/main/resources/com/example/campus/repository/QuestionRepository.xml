@@ -9,4 +9,14 @@
 	<select id="findAll" resultType="com.example.campus.entity.Question">
 		select * from questions
 	</select>
+
+	<!-- レコードの新規作成 -->
+	<select id="create" resultType="com.example.campus.entity.Question">
+		insert into questions (question, created_at, updated_at) values (?, current_timestamp(), current_timestamp())
+	</select>
+
+	<!-- correct_answers.questions_idに入れる値を取得 -->
+	<select id="getMaxQuestionId" resultType="com.example.campus.entity.Question">
+		SELECT MAX(id) FROM questions
+	</select>
 </mapper>

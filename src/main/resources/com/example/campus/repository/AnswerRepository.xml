@@ -9,4 +9,9 @@
 	<select id="findAll" resultType="com.example.campus.entity.Answer">
 		select * from correct_answers
 	</select>
+
+	<!-- レコードの新規作成 -->
+	<select id="create" resultType="com.example.campus.entity.Answer">
+		insert into answers (questions_id, answer, created_at, updated_at) values (?, ?, current_timestamp(), current_timestamp())
+	</select>
 </mapper>
