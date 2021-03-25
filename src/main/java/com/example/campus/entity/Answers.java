@@ -3,32 +3,41 @@ package com.example.campus.entity;
 import java.sql.Timestamp;
 
 //entityクラス
-public class Question {
+public class Answers {
 
 	private int id;
-	private String question;
+	private int questions_id;
+	private String answer;
 	private Timestamp created_at;
 	private Timestamp updated_at;
-	
-	public Question(int id, String question) {
+
+	public Answers(int id, int questions_id, String answer) {
 		this.id = id;
-		this.question = question;
+		this.questions_id = questions_id;
+		this.answer = answer;
 	}
 
-	public Question() {
+	public Answers() {
+
 	}
-	//getter,setterの設定
+
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getQuestion() {
-		return question;
+	public int getQuestions_id() {
+		return questions_id;
 	}
-	public void setQuestion(String question) {
-		this.question = question;
+	public void setQuestions_id(int questions_id) {
+		this.questions_id = questions_id;
+	}
+	public String getAnswer() {
+		return answer;
+	}
+	public void setAnswer(String answer) {
+		this.answer = answer;
 	}
 	public Timestamp getCreatedAt() {
 		return created_at;
@@ -42,5 +51,8 @@ public class Question {
 	public void setUpdatedAt(Timestamp updated_at) {
 		this.updated_at = updated_at;
 	}
+
+
+
 
 }

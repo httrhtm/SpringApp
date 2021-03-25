@@ -16,10 +16,10 @@
 	</div>
 
 	<!-- form -->
-	<form method="post">
+	<form method="post" th:action="@{/insert}">
 		<!-- 問題 -->
 		<div class="question">
-			問題： <input readonly type="text" th:value="${question.question}" />
+			問題： <input readonly type="text" th:value="${questionForm.question}" />
 		</div>
 
 		<!-- 答え -->

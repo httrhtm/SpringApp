@@ -2,42 +2,33 @@ package com.example.campus.entity;
 
 import java.sql.Timestamp;
 
-//entityクラス
-public class Answer {
+//データベースのデータを格納する
+public class Questions {
 
 	private int id;
-	private int questions_id;
-	private String answer;
+	private String question;
 	private Timestamp created_at;
 	private Timestamp updated_at;
 
-	public Answer(int id, int questions_id, String answer) {
+	public Questions(int id, String question) {
 		this.id = id;
-		this.questions_id = questions_id;
-		this.answer = answer;
+		this.question = question;
 	}
 
-	public Answer() {
-
+	public Questions() {
 	}
-
+	//getter,setterの設定
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getQuestions_id() {
-		return questions_id;
+	public String getQuestion() {
+		return question;
 	}
-	public void setQuestions_id(int questions_id) {
-		this.questions_id = questions_id;
-	}
-	public String getAnswer() {
-		return answer;
-	}
-	public void setAnswer(String answer) {
-		this.answer = answer;
+	public void setQuestion(String question) {
+		this.question = question;
 	}
 	public Timestamp getCreatedAt() {
 		return created_at;
@@ -51,8 +42,5 @@ public class Answer {
 	public void setUpdatedAt(Timestamp updated_at) {
 		this.updated_at = updated_at;
 	}
-
-
-
 
 }

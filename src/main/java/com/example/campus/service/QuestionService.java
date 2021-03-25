@@ -5,15 +5,34 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.campus.entity.Question;
+import com.example.campus.entity.Questions;
 import com.example.campus.repository.QuestionRepository;
 
-@Service //SpringのDIコンテナの管理対象であることを示す
+//具体的な処理（ビジネスロジック）を記述するクラス
+@Service
 public class QuestionService {
-	@Autowired //依存性注入の対象であることを示す、QuestionRepositoryのインスタンス化をDIコンテナが勝手にやってくれる
-	private QuestionRepository questionRepository;
 
-	public List<Question> findAll() {
-		return questionRepository.findAll();
-	}
+	/**
+     * questionsテーブルへアクセスするQuestionRepository(mapper)
+     */
+    @Autowired
+    private QuestionRepository repository;
+
+    /**
+     * questionsテーブルの全件を取得する
+     *
+     * @return questionsテーブル全件
+     */
+    public List<Questions> findAll() {
+    	return repository.findAll();
+    }
+
+    /**
+     * DBにinsertする
+     */
+    public void insertQuestion(Questions questions) {
+    	//追加処理
+    	repository.insertQuestion(questions);
+
+    }
 }

@@ -16,7 +16,7 @@
 	</div>
 
 	<!-- form -->
-	<form method="post" th:action="@{/confirm}" th:object="${question}">
+	<form method="post" th:action="@{/confirm}" th:object="${questionForm}">
 		<!-- 問題 -->
 		<div class="question">
 			問題： <input type="text" th:field="*{question}" />
