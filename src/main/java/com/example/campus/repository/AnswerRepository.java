@@ -4,11 +4,11 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.example.campus.entity.Answer;
+import com.example.campus.entity.Answers;
 
 @Mapper
 public interface AnswerRepository {
 
-	public List<Answer> findAll();
+	public List<Answers> findAll();
 
 }

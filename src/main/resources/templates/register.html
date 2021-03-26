@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>register</title>
+</head>
+<body>
+	<!-- nav -->
+	<div class="nav">
+		<form method="post" th:action="@{/top}" style="display: inline">
+			<input type="submit" value="top" />
+		</form>
+		<form method="post" th:action="@{/logout}" style="display: inline">
+			<input type="submit" value="logout" />
+		</form>
+	</div>
+
+	<!-- form -->
+	<form method="post" th:action="@{/confirm}" th:object="${questionForm}">
+		<!-- 問題 -->
+		<div class="question">
+			問題： <input type="text" th:field="*{question}" />
+		</div>
+
+		<!-- 答え -->
+		<div class="answer">
+			答え： <input type="text" />
+			<!-- 削除（未実装） -->
+			<input type="submit" value="削除*" style="display: inline" />
+		</div>
+
+		<!-- 追加（未実装） -->
+		<input type="submit" value="追加*" style="display: inline" />
+
+		<!-- 確認 -->
+		<input type="submit" value="確認" style="display: inline" />
+	</form>
+
+	<!-- 戻る -->
+	<form method="get" th:action="@{/list}" style="display: inline">
+		<input type="submit" value="戻る" />
+	</form>
+
+</body>
+</html>

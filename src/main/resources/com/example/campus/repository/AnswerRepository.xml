@@ -6,7 +6,12 @@
 <!-- namespace：mapperインターフェースのパッケージ付きクラス名を指定 -->
 <mapper namespace="com.example.campus.repository.AnswerRepository">
 	<!-- 全件取得 -->
-	<select id="findAll" resultType="com.example.campus.entity.Answer">
+	<select id="findAll" resultType="com.example.campus.entity.Answers">
 		select * from correct_answers
 	</select>
+
+	<!-- レコードの新規作成 -->
+	<insert id="create" parameterType="String">
+		insert into answers (questions_id, answer, created_at, updated_at) values (#{question_id}, #{answer}, current_timestamp(), current_timestamp())
+	</insert>
 </mapper>
