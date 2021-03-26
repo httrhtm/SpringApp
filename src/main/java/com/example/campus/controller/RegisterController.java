@@ -48,9 +48,9 @@ public class RegisterController {
 	 */
 	//question
 	@PostMapping("/insert")
-	public String insertQuestin(Questions questions) {
+	public String insertQuestion(@ModelAttribute("question") String question) {
 		//insert
-		service.create(questions);
+		service.create(question);
 		return "redirect:/list";
 	}
 

@@ -14,7 +14,7 @@
 
 	<!-- レコードの新規作成 -->
 	<!-- parameterType:このステートメントに渡される引数の型を指定する -->
-	<insert id="create" parameterType="com.example.campus.entity.Questions">
+	<insert id="create" parameterType="String">
 		insert into questions (question, created_at, updated_at) values (#{question}, current_timestamp(), current_timestamp())
 	</insert>
 </mapper>

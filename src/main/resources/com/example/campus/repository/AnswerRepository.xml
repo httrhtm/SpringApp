@@ -11,7 +11,7 @@
 	</select>
 
 	<!-- レコードの新規作成 -->
-	<select id="create" resultType="com.example.campus.entity.Answers">
-		insert into answers (questions_id, answer, created_at, updated_at) values (?, ?, current_timestamp(), current_timestamp())
-	</select>
+	<insert id="create" parameterType="String">
+		insert into answers (questions_id, answer, created_at, updated_at) values (#{question_id}, #{answer}, current_timestamp(), current_timestamp())
+	</insert>
 </mapper>

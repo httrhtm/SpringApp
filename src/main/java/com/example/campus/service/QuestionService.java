@@ -30,9 +30,9 @@ public class QuestionService {
     /**
      * DBに登録する
      */
-    public void create(Questions questions) {
+    public void create(String question) {
     	//追加処理
-    	repository.create(questions);
+    	repository.create(question);
 
     }
 }
