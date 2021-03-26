@@ -11,14 +11,7 @@ public class Answers {
 	private Timestamp created_at;
 	private Timestamp updated_at;
 
-	public Answers(int id, int questions_id, String answer) {
-		this.id = id;
-		this.questions_id = questions_id;
-		this.answer = answer;
-	}
-
 	public Answers() {
-
 	}
 
 	public int getId() {

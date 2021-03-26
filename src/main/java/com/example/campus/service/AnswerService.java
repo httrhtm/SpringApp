@@ -13,10 +13,15 @@ import com.example.campus.repository.AnswerRepository;
 @Service //SpringのDIコンテナの管理対象であることを示す
 public class AnswerService {
 	@Autowired //依存性注入の対象であることを示す、QuestionRepositoryのインスタンス化をDIコンテナが勝手にやってくれる
-	private AnswerRepository answerRepository;
+	private AnswerRepository repository;
 
 	public List<Answers> findAll() {
-		return answerRepository.findAll();
+		return repository.findAll();
+	}
+
+	public void create(String answer) {
+		//追加処理
+    	repository.create(answer);
 	}
 
 }

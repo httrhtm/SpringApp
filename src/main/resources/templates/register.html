@@ -16,15 +16,15 @@
 	</div>
 
 	<!-- form -->
-	<form method="post" th:action="@{/confirm}" th:object="${questionForm}">
+	<form method="post" th:action="@{/confirm}">
 		<!-- 問題 -->
 		<div class="question">
-			問題： <input type="text" th:field="*{question}" />
+			問題： <input type="text" name="question" />
 		</div>
 
 		<!-- 答え -->
 		<div class="answer">
-			答え： <input type="text" />
+			答え： <input type="text" name="answer" />
 			<!-- 削除（未実装） -->
 			<input type="submit" value="削除*" style="display: inline" />
 		</div>

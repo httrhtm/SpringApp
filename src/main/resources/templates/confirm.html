@@ -19,12 +19,12 @@
 	<form method="post" th:action="@{/insert}">
 		<!-- 問題 -->
 		<div class="question">
-			問題： <input readonly type="text" name="question" th:value="${questionForm.question}" />
+			問題： <input readonly type="text" name="question" th:value="${question}" />
 		</div>
 
 		<!-- 答え -->
 		<div class="answer">
-			答え： <input readonly type="text" />
+			答え： <input readonly type="text" name="answer" th:value="${answer}" />
 		</div>
 
 		<!-- 確認 -->
