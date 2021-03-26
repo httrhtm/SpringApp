@@ -28,11 +28,11 @@ public class QuestionService {
     }
 
     /**
-     * DBにinsertする
+     * DBに登録する
      */
-    public void insertQuestion(Questions questions) {
+    public void create(Questions questions) {
     	//追加処理
-    	repository.insertQuestion(questions);
+    	repository.create(questions);
 
     }
 }

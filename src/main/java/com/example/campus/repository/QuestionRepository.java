@@ -23,6 +23,6 @@ public interface QuestionRepository {
      * 追加
      * @param 問題テーブル(questions)の追加データ
      */
-	Questions insertQuestion(Questions questions);
+	void create(Questions questions);
 
 }

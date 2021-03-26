@@ -10,10 +10,6 @@ public class Questions {
 	private Timestamp created_at;
 	private Timestamp updated_at;
 
-	public Questions(int id, String question) {
-		this.id = id;
-		this.question = question;
-	}
 
 	public Questions() {
 	}
