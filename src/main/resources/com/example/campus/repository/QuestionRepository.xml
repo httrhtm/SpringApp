@@ -6,17 +6,15 @@
 <!-- namespace：mapperインターフェースのパッケージ付きクラス名を指定 -->
 <mapper namespace="com.example.campus.repository.QuestionRepository">
 	<!-- 全件取得 -->
+	<!-- id:ネームスペース内の識別子 -->
+	<!-- resultType:このステートメントから返されるオブジェクトの型を指定する -->
 	<select id="findAll" resultType="com.example.campus.entity.Questions">
 		select * from questions
 	</select>
 
 	<!-- レコードの新規作成 -->
-	<select id="create" resultType="com.example.campus.entity.Questions">
-		insert into questions (question, created_at, updated_at) values (?, current_timestamp(), current_timestamp())
-	</select>
-
-	<!-- correct_answers.questions_idに入れる値を取得 -->
-	<select id="getMaxQuestionId" resultType="com.example.campus.entity.Questions">
-		SELECT MAX(id) FROM questions
-	</select>
+	<!-- parameterType:このステートメントに渡される引数の型を指定する -->
+	<insert id="insertQuestion" parameterType="com.example.campus.entity.Questions">
+		insert into questions (question, created_at, updated_at) values (#{question}, current_timestamp(), current_timestamp())
+	</insert>
 </mapper>

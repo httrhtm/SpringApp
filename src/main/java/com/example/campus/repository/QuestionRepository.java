@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.example.campus.entity.Questions;
 
 
-//データベースへアクセスするためのクラス
+//データベースへアクセスするためのインターフェース
 @Repository // springのDIの対象となる
 @Mapper // MybatisでxmlのSQLが対応づけられる
 public interface QuestionRepository {
