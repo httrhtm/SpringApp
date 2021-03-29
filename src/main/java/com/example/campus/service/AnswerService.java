@@ -19,9 +19,10 @@ public class AnswerService {
 		return repository.findAll();
 	}
 
-	public void create(String answer) {
-		//追加処理
-    	repository.create(answer);
+	public void create(Answers answer) {
+		Answers answers = new Answers();
+		answers.setAnswer(answer.getAnswer());
+		repository.create(answer);
 	}
 
 }

@@ -11,6 +11,12 @@ public class Answers {
 	private Timestamp created_at;
 	private Timestamp updated_at;
 
+	public Answers (int questions_id, String answer) {
+		this.setId(id);
+		this.setQuestionsId(questions_id);
+		this.setAnswer(answer);
+	}
+
 	public Answers() {
 	}
 
@@ -20,10 +26,10 @@ public class Answers {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getQuestions_id() {
+	public int getQuestionsId() {
 		return questions_id;
 	}
-	public void setQuestions_id(int questions_id) {
+	public void setQuestionsId(int questions_id) {
 		this.questions_id = questions_id;
 	}
 	public String getAnswer() {

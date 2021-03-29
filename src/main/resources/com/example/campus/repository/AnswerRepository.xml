@@ -11,7 +11,7 @@
 	</select>
 
 	<!-- レコードの新規作成 -->
-	<insert id="create" parameterType="String">
-		insert into correct_answers (questions_id, answer, created_at, updated_at) values ((select id from questions order by created_at desc limit 1), #{answer}, current_timestamp(), current_timestamp())
+	<insert id="create">
+		insert into correct_answers (questions_id, answer) values ((select id from questions order by created_at desc limit 1), #{answer});
 	</insert>
 </mapper>
