@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.campus.entity.Answers;
 import com.example.campus.entity.Questions;
+import com.example.campus.service.AnswerService;
 import com.example.campus.service.QuestionService;
 
 //フロントエンドとサーバーサイドの入出力の管理を行う
@@ -18,7 +20,8 @@ public class RegisterController {
      * Questionサービスクラスへのアクセス
      */
 	@Autowired
-	private QuestionService service;
+	private QuestionService questionService;
+	private AnswerService answerService;
 
 	/**
 	 * 登録画面に遷移する
@@ -26,8 +29,7 @@ public class RegisterController {
 	 */
 	//question
 	@RequestMapping("/register")
-	public String register(Model model) {
-		model.addAttribute("questionForm", new Questions());
+	public String register() {
 		return "register";
 	}
 
@@ -37,8 +39,9 @@ public class RegisterController {
 	 */
 	//question
 	@PostMapping("/confirm")
-	public String confirm(@ModelAttribute Questions questions, Model model) {
-		model.addAttribute("questionForm", questions);
+	public String confirm(@ModelAttribute("question") String question, @ModelAttribute("answer") String answer, Model model) {
+		model.addAttribute(question, "question");
+		model.addAttribute(answer, "answer");
 		return "confirm";
 	}
 
@@ -48,9 +51,11 @@ public class RegisterController {
 	 */
 	//question
 	@PostMapping("/insert")
-	public String insertQuestion(@ModelAttribute("question") String question) {
+	public String insert(Questions question, Answers answer) {
 		//insert
-		service.create(question);
+		questionService.create(question);
+		answerService.create(answer);
+
 		return "redirect:/list";
 	}
 

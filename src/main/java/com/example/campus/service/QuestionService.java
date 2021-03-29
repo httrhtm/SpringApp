@@ -27,12 +27,9 @@ public class QuestionService {
     	return repository.findAll();
     }
 
-    /**
-     * DBに登録する
-     */
-    public void create(String question) {
-    	//追加処理
-    	repository.create(question);
+	public void create(Questions question) {
+		repository.create(question);
+	}
 
-    }
+
 }

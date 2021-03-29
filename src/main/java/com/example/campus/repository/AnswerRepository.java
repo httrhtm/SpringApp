@@ -11,4 +11,6 @@ public interface AnswerRepository {
 
 	public List<Answers> findAll();
 
+	public void create(Answers answer);
+
 }
