@@ -52,8 +52,6 @@ public class RegisterController {
 	//question
 	@PostMapping("/insert")
 	public String insert(Questions question, Answers answer) {
-		System.out.println(question);
-		System.out.println(answer);
 		//insert
 		questionService.create(question);
 		answerService.create(answer);
