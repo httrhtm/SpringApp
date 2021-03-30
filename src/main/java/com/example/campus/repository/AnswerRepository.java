@@ -23,6 +23,6 @@ public interface AnswerRepository {
 	/**
 	 * 更新
 	 */
-	public Answers update(Answers answer);
+	public void update(Answers answer);
 
 }
