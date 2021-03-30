@@ -17,4 +17,14 @@
 	<insert id="create" parameterType="String">
 		insert into questions (question, created_at, updated_at) values (#{question}, current_timestamp(), current_timestamp())
 	</insert>
+
+	<!-- レコードの更新 -->
+	<update id="update">
+		update questions set question = #{question}, updated_at = current_timestamp() where id = #{id}
+	</update>
+
+	<!-- idと一致したレコードを取得 -->
+	<select id="findOne" resultType="com.example.campus.entity.Questions">
+		select * from questions where id = #{id}
+	</select>
 </mapper>

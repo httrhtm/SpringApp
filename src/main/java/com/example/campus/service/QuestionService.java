@@ -20,15 +20,32 @@ public class QuestionService {
 
     /**
      * questionsテーブルの全件を取得する
-     *
      * @return questionsテーブル全件
      */
     public List<Questions> findAll() {
     	return repository.findAll();
     }
 
+    /**
+     * レコードを新規作成する
+     */
 	public void create(Questions question) {
 		repository.create(question);
+	}
+
+	/**
+     * レコードをを更新
+     * @return updateする値
+     */
+	public void update(Questions question) {
+	}
+
+	/**
+     * idが一致したレコードを取得する
+     * @return idが一致したレコード
+     */
+	public Questions findOne(int id) {
+		return repository.findOne(id);
 	}
 
 

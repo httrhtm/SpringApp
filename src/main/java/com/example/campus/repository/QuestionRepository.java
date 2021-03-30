@@ -12,11 +12,24 @@ import com.example.campus.entity.Questions;
 public interface QuestionRepository {
 
 	/**
-     * 全件取得
-     * @param 検索結果
-     */
+	 * 全件取得
+	 * @param 検索結果
+	 */
 	List<Questions> findAll();
 
+	/**
+	 * レコードの新規作成
+	 */
 	void create(Questions question);
+
+	/**
+	 * レコードの更新
+	 */
+	void update(Questions question);
+
+	/**
+	 * 1件取得
+	 */
+	Questions findOne(int id);
 
 }

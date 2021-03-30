@@ -27,12 +27,12 @@
 		<div class="question">
 			問題：
 			<!-- 問題番号 -->
-			<span th:text="${question.id}"></span>
+			<span th:text="${question.getId()}"></span>
 			<!-- 問題 -->
-			<span th:text="${question.question}"></span>
+			<span th:text="${question.getQuestion()}"></span>
 			<!-- 編集ボタン -->
 			<form method="post" th:action="@{/edit}" style="display: inline">
-				<input type="hidden" name="id" th:value="*{id}" />
+				<input type="hidden" name="id" th:value="${question.getId()}" />
 				<input type="submit" value="編集" />
 			</form>
 
