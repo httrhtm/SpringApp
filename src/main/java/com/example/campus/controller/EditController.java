@@ -50,7 +50,7 @@ public class EditController {
 	 * > データベースをUPDATE
 	 * @return 一覧画面へのパス
 	 */
-	@PostMapping("update/{id}") //更新
+	@PostMapping("/update")
 	public String update(@ModelAttribute("id") int id, @ModelAttribute("question") String question, Questions questions) {
 		questions.setId(id);
 		questions.setQuestion(question);

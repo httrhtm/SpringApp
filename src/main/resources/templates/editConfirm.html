@@ -16,7 +16,7 @@
 	</div>
 
 	<!-- form -->
-	<form th:method="post" th:action="@{/update/{id}(id=*{id})}">
+	<form th:method="post" th:action="@{/update}">
 		<!-- 問題番号 -->
 		<div class="questionNum">
 			問題番号： <input readonly type="text" name="id" th:value="${id}" />
@@ -39,6 +39,7 @@
 	<!-- 戻る -->
 	<form method="post" th:action="@{/edit}" style="display: inline">
 		<input type="submit" value="戻る" />
+		<input type="hidden" name="id" th:value="${id}" />
 	</form>
 
 </body>
