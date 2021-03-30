@@ -25,4 +25,8 @@ public class AnswerService {
 		repository.create(answer);
 	}
 
+	public Answers update(Answers answer) {
+		return repository.update(answer);
+	}
+
 }

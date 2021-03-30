@@ -27,29 +27,29 @@
 		<div class="question">
 			問題：
 			<!-- 問題番号 -->
-			<span th:text="${question.id}"></span>
+			<span th:text="${question.getId()}"></span>
 			<!-- 問題 -->
-			<span th:text="${question.question}"></span>
+			<span th:text="${question.getQuestion()}"></span>
 			<!-- 編集ボタン -->
-			<form method="post" th:action="@{/edit}" style="display: inline">
-				<input type="hidden" name="id" th:text="*{id}" /> <input
-					type="submit" value="編集" />
+			<form th:method="put" th:action="@{/edit}" style="display: inline">
+				<input type="hidden" name="id" th:value="${question.getId()}" />
+				<input type="submit" value="編集" />
 			</form>
 
 			<!-- 削除ボタン -->
 			<form method="post" th:action="@{/delete}" style="display: inline">
-				<input type="hidden" name="questionId" value="" /> <input
-					type="submit" value="削除" />
+				<input type="hidden" name="question_id" value="" />
+				<input type="submit" value="削除" />
 			</form>
 		</div>
 
 		<!-- 回答 -->
 		<div th:each="answer:${answerList}">
-			<div th:if="${answer.questions_id == question.id}">
+			<div th:if="${answer.getQuestionsId() == question.getId()}">
 				<div class="answer">
 					答え：
 					<!-- 答え -->
-					<span th:text="${answer.answer}"></span>
+					<span th:text="${answer.getAnswer()}"></span>
 				</div>
 			</div>
 		</div>
