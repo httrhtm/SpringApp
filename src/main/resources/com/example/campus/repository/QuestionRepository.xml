@@ -27,4 +27,9 @@
 	<select id="findOne" resultType="com.example.campus.entity.Questions">
 		select * from questions where id = #{id}
 	</select>
+
+	<!-- idと一致したレコードを削除 -->
+	<delete id="delete">
+		delete from questions where id = #{id}
+	</delete>
 </mapper>
