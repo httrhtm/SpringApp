@@ -32,4 +32,6 @@ public interface QuestionRepository {
 	 */
 	Questions findOne(int id);
 
+	void delete(Questions questions);
+
 }

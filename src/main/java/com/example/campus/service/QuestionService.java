@@ -49,5 +49,10 @@ public class QuestionService {
 		return repository.findOne(id);
 	}
 
+	public void delete(Questions questions) {
+		repository.delete(questions);
+
+	}
+
 
 }
