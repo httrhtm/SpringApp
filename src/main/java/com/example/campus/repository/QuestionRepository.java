@@ -25,7 +25,7 @@ public interface QuestionRepository {
 	/**
 	 * レコードの更新
 	 */
-	void update(Questions question);
+	void update(Questions questions);
 
 	/**
 	 * 1件取得

@@ -31,7 +31,7 @@
 			<!-- 問題 -->
 			<span th:text="${question.getQuestion()}"></span>
 			<!-- 編集ボタン -->
-			<form method="post" th:action="@{/edit}" style="display: inline">
+			<form th:method="put" th:action="@{/edit}" style="display: inline">
 				<input type="hidden" name="id" th:value="${question.getId()}" />
 				<input type="submit" value="編集" />
 			</form>

@@ -37,7 +37,8 @@ public class QuestionService {
      * レコードをを更新
      * @return updateする値
      */
-	public void update(Questions question) {
+	public void update(Questions questions) {
+		repository.update(questions);
 	}
 
 	/**
