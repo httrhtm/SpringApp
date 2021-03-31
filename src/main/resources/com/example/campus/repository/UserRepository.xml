@@ -9,7 +9,7 @@
 	<!--今回利用するステートメントの定義 -->
 	<select id = "identifyUser" parameterType="java.lang.String" resultMap="userDetails">
 	select
-		id, password
+		id, password, name
 		from users
 		where id = #{id}
 		and deleteflag = 0

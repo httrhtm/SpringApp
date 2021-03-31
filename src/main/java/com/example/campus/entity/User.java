@@ -19,6 +19,7 @@ public class User implements UserDetails {
 
 	//インターフェースに書いてない値を代入するための変数を用意する
 	private int id;
+	private String name;
 	private String password;
 	private int deleteflag;
 
@@ -29,6 +30,14 @@ public class User implements UserDetails {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	//UserDetailsに書いてあるメソッドを使うからオーバーライドしないとエラーが出るかも。

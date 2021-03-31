@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<meta charset="UTF-8">
+<title>test result</title>
+</head>
+<body>
+	<!-- タイトル -->
+	<h1>テスト結果</h1>
+
+	<!-- top, logoutボタン -->
+	<div class="nav">
+		<form method="post" th:action="@{/top}" style="display: inline">
+			<input type="submit" value="top" />
+		</form>
+		<form method="post" th:action="@{/logout}" style="display: inline">
+			<input type="submit" value="logout" />
+		</form>
+	</div>
+
+	<!-- 詳細 -->
+	<div class="detail">
+		<!-- ログインユーザー名 -->
+		<p><span sec:authentication="principal.name"></span>さん</p>
+
+		<!-- 問題数と正解数 -->
+		<span th:text="${total}"></span>
+
+		<!-- 点数 -->
+		<span></span>
+	</div>
+
+	<!-- 現在時刻 -->
+	<div class="date">
+		<span th:text="${date}"></span>
+	</div>
+
+</body>
+</html>

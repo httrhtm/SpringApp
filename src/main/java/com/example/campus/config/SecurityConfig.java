@@ -9,13 +9,13 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.example.campus.service.DetailsUserService;
+import com.example.campus.service.UserDetailsImplService;
 
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
-	private DetailsUserService userDetailsService;
+	private UserDetailsImplService userDetailsService;
 
 	//ユーザーの認証方式（3つの方法：インメモリ、DB、LDAP?）
 	@Override

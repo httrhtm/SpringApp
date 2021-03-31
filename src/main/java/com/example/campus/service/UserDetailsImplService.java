@@ -10,7 +10,7 @@ import com.example.campus.entity.User;
 import com.example.campus.repository.UserRepository;
 
 @Service //SpringのDIコンテナの管理対象であることを示す
-public class DetailsUserService implements UserDetailsService {
+public class UserDetailsImplService implements UserDetailsService {
 
 	@Autowired //依存性注入の対象であることを示す、UserRepositoryのインスタンス化をDIコンテナ
 	private UserRepository userRepository;
