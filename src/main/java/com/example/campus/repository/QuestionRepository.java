@@ -32,6 +32,9 @@ public interface QuestionRepository {
 	 */
 	Questions findOne(int id);
 
+	/**
+	 * レコードの削除
+	 */
 	void delete(Questions questions);
 
 }

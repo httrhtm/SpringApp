@@ -20,4 +20,9 @@
 		update correct_answers set answer = #{answer}, updated_at = current_timestamp() where id = #{id}
 	</update>
 
+	<!-- idと一致したレコードを削除 -->
+	<delete id="delete">
+		delete from correct_answers where questions_id = #{questions_id}
+	</delete>
+
 </mapper>

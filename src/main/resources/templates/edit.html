@@ -29,20 +29,26 @@
 
 		<!-- 答え -->
 		<div th:each="answer:${answerList}">
+			<!-- answers.questions_idとquestions.idが一致した場合 -->
 			<div th:if="${answer.getQuestionsId() == question.getId()}">
 				<div class="answer">
-					答え： <input type="text" name="answer" th:value="${answer}" />
-					<!-- 削除（未実装） -->
-					<input type="submit" value="削除*" style="display: inline" />
+					答え： <input type="text" name="answer" th:value="${answer.getAnswer()}" />
+					<!-- correct_answers.idを一緒に渡す -->
+					<input type="hidden" name="answer_id" th:value="${answer.getId()}" />
+					<!-- correct_answers.questions_idを一緒に渡す -->
+					<input type="hidden" name="questions_id" th:value="${answer.getQuestionsId()}" />
 				</div>
 			</div>
 		</div>
 
-		<!-- 追加（未実装） -->
-			<input type="submit" value="追加*" style="display: inline" />
+		<!-- 削除（未実装） -->
+		<input type="submit" value="削除*" style="display: inline" />
 
-			<!-- 確認 -->
-			<input type="submit" value="確認" style="display: inline" />
+		<!-- 追加（未実装） -->
+		<input type="submit" value="追加*" style="display: inline" />
+
+		<!-- 確認 -->
+		<input type="submit" value="確認" style="display: inline" />
 	</form>
 
 	<!-- 戻る -->
