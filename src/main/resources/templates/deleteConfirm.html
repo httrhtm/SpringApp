@@ -17,19 +17,25 @@
 
 	<!-- form -->
 	<form th:method="post" th:action="@{/delete}">
-
 		<!-- 問題 -->
 		<div class="question">
 			問題： <input readonly type="text" name="question" th:value="${question.getQuestion()}" />
+			<!-- questions.idを一緒に渡す -->
+			<input type="hidden" name="id" th:value="${question.getId()}" />
 		</div>
 
 		<!-- 答え -->
-		<div class="answer">
-			答え： <input readonly type="text" name="answer" />
+		<div th:each="answer:${answerList}">
+			<div th:if="${answer.getQuestionsId() == question.getId()}">
+				<div class="answer">
+					答え： <input readonly type="text" name="answer" th:value="${answer.getAnswer()}" />
+					<!-- correct_answers.questions_idを一緒に渡す -->
+					<input type="hidden" name="questions_id" th:value="${answer.getQuestionsId()}" />
+				</div>
+			</div>
 		</div>
 
-		<!-- 確認 -->
-		<input type="hidden" name="id" th:value="${question.getId()}" />
+		<!-- 削除 -->
 		<input type="submit" value="削除" style="display: inline" />
 	</form>
 

@@ -18,6 +18,7 @@ public class EditController {
      */
 	@Autowired
 	private QuestionService questionService;
+	@Autowired
 	private AnswerService answerService;
 
 	/**
@@ -29,7 +30,7 @@ public class EditController {
 	@PostMapping("/edit")
 	public String edit(@ModelAttribute("id") int id, Model model) {
 		model.addAttribute("question", questionService.findOne(id));
-//		model.addAttribute("answerList", answerService.findAll());
+		model.addAttribute("answerList", answerService.findAll());
 		return "edit";
 	}
 

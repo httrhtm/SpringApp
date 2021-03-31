@@ -21,6 +21,7 @@ public class RegisterController {
      */
 	@Autowired
 	private QuestionService questionService;
+	@Autowired
 	private AnswerService answerService;
 
 	/**
@@ -51,10 +52,10 @@ public class RegisterController {
 	 */
 	//question
 	@PostMapping("/insert")
-	public String insert(Questions question, Answers answer) {
+	public String insert(Questions questions, Answers answers) {
 		//insert
-		questionService.create(question);
-		answerService.create(answer);
+		questionService.create(questions);
+		answerService.create(answers);
 
 		return "redirect:/list";
 	}

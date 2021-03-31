@@ -49,6 +49,9 @@ public class QuestionService {
 		return repository.findOne(id);
 	}
 
+	/**
+     * idが一致したレコードを削除する
+     */
 	public void delete(Questions questions) {
 		repository.delete(questions);
 

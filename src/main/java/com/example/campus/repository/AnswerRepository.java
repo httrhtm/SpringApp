@@ -13,16 +13,21 @@ public interface AnswerRepository {
 	 * 全件取得
 	 * @param 検索結果
 	 */
-	public List<Answers> findAll();
+	List<Answers> findAll();
 
 	/**
 	 * 新規作成
 	 */
-	public void create(Answers answer);
+	public void create(Answers answers);
 
 	/**
 	 * 更新
 	 */
-	public void update(Answers answer);
+	public void update(Answers answers);
+
+	/**
+	 * 削除
+	 */
+	void delete(Answers answers);
 
 }
