@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.example.campus.entity.Answers;
 import com.example.campus.entity.Questions;
 import com.example.campus.service.AnswerService;
 import com.example.campus.service.QuestionService;
@@ -37,12 +38,21 @@ public class EditController {
 	/**
 	 * 確認画面に遷移する
 	 * > 編集後の入力値を表示する
+	 * > idも一緒に渡す
 	 * @return 確認画面へのパス
 	 */
 	@PostMapping("/editConfirm")
-	public String confirm(@ModelAttribute("id") String id, @ModelAttribute("question") String question,  Model model) {
+	public String confirm(@ModelAttribute("id") String id,
+			@ModelAttribute("question") String question,
+			@ModelAttribute("questions_id") String questions_id,
+			@ModelAttribute("answer") String answer,
+			Model model) {
+
 		model.addAttribute("id", id);
 		model.addAttribute("question", question);
+		model.addAttribute("questions_id", questions_id);
+		model.addAttribute("answer", answer);
+
 		return "editConfirm";
 	}
 
@@ -52,12 +62,21 @@ public class EditController {
 	 * @return 一覧画面へのパス
 	 */
 	@PostMapping("/update")
-	public String update(@ModelAttribute("id") int id, @ModelAttribute("question") String question, Questions questions) {
+	public String update(@ModelAttribute("id") int id,
+			@ModelAttribute("question") String question,
+			@ModelAttribute("questions_id") int questions_id,
+			@ModelAttribute("answer") String answer,
+			Questions questions, Answers answers) {
+
+		//entityにセット
 		questions.setId(id);
 		questions.setQuestion(question);
+		answers.setQuestionsId(questions_id);
+		answers.setAnswer(answer);
+
 		//update
 		questionService.update(questions);
-//		answerService.update(answer);
+		answerService.update(answers);
 		return "redirect:/list";
 	}
 

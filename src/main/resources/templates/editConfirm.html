@@ -30,6 +30,8 @@
 		<!-- 答え -->
 		<div class="answer">
 			答え： <input readonly type="text" name="answer" th:value="${answer}" />
+			<!-- questions_idを一緒に渡す -->
+			<input type="hidden" name="questions_id" th:value="${questions_id}" />
 		</div>
 
 		<!-- 確認 -->
