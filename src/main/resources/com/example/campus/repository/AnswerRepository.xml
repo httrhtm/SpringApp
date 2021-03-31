@@ -17,7 +17,7 @@
 
 	<!-- レコードの更新 -->
 	<update id="update">
-		update correct_answers set answer = #{answer}, updated_at = current_timestamp() where questions_id = #{questions_id}
+		update correct_answers set answer = #{answer}, updated_at = current_timestamp() where id = #{id}
 	</update>
 
 	<!-- idと一致したレコードを削除 -->

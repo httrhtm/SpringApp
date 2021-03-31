@@ -33,6 +33,8 @@
 			<div th:if="${answer.getQuestionsId() == question.getId()}">
 				<div class="answer">
 					答え： <input type="text" name="answer" th:value="${answer.getAnswer()}" />
+					<!-- correct_answers.idを一緒に渡す -->
+					<input type="hidden" name="answer_id" th:value="${answer.getId()}" />
 					<!-- correct_answers.questions_idを一緒に渡す -->
 					<input type="hidden" name="questions_id" th:value="${answer.getQuestionsId()}" />
 				</div>

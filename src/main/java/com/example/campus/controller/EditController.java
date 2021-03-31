@@ -44,12 +44,14 @@ public class EditController {
 	@PostMapping("/editConfirm")
 	public String confirm(@ModelAttribute("id") String id,
 			@ModelAttribute("question") String question,
+			@ModelAttribute("answer_id") String answer_id,
 			@ModelAttribute("questions_id") String questions_id,
 			@ModelAttribute("answer") String answer,
 			Model model) {
 
 		model.addAttribute("id", id);
 		model.addAttribute("question", question);
+		model.addAttribute("answer_id", answer_id);
 		model.addAttribute("questions_id", questions_id);
 		model.addAttribute("answer", answer);
 
@@ -64,6 +66,7 @@ public class EditController {
 	@PostMapping("/update")
 	public String update(@ModelAttribute("id") int id,
 			@ModelAttribute("question") String question,
+			@ModelAttribute("answer_id") int answer_id,
 			@ModelAttribute("questions_id") int questions_id,
 			@ModelAttribute("answer") String answer,
 			Questions questions, Answers answers) {
@@ -71,6 +74,7 @@ public class EditController {
 		//entityにセット
 		questions.setId(id);
 		questions.setQuestion(question);
+		answers.setId(answer_id);
 		answers.setQuestionsId(questions_id);
 		answers.setAnswer(answer);
 
