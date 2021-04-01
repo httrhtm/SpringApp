@@ -10,4 +10,15 @@
 	<insert id="create" parameterType="int">
 		insert into histories (users_id, point, created_at) values (#{users_id}, #{point}, current_timestamp())
 	</insert>
+
+	<!-- 全件取得 -->
+	<select id="findAll" resultType="com.example.campus.entity.Histories">
+		select * from histories
+	</select>
+
+	<!-- 指定IDのレコードを取得 -->
+	<select id="findByUsersId" resultType="com.example.campus.entity.Histories">
+		select * from histories where users_id = #{users_id}
+	</select>
+
 </mapper>
