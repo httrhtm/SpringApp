@@ -32,4 +32,8 @@ public class UserDetailsImplService implements UserDetailsService {
 
 	}
 
+	public Users findByUsersId(int id) {
+		return repository.findByUsersId(id);
+	}
+
 }
