@@ -25,8 +25,8 @@ import com.example.campus.service.QuestionService;
 public class TestController {
 
 	/**
-     * サービスクラスへのアクセス
-     */
+	 * サービスクラスへのアクセス
+	 */
 	@Autowired
 	private QuestionService questionService;
 	@Autowired
@@ -34,7 +34,7 @@ public class TestController {
 	@Autowired
 	private HistoryService historyService;
 	@Autowired
-	HttpSession session;
+	private HttpSession session;
 
 	/**
 	 * テスト画面に遷移する
@@ -111,7 +111,6 @@ public class TestController {
 		/**
 		 * entityにセット
 		 */
-
 		int user_id = Integer.valueOf(String.valueOf(session.getAttribute("user_id")));
 		int int_score = (int)score; //得点をintに変換
 
