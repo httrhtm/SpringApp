@@ -12,19 +12,29 @@
 		</form>
 	</div>
 	<!-- menu -->
-	<div class="menu">
-		<!-- 問題一覧へ遷移 -->
-		<form method="post" th:action="@{/list}">
-			<input type="submit" value="問題と答えを確認・登録する ＞" />
-		</form>
-		<!-- テストへ遷移 -->
-		<form method="post" th:action="@{/test}">
-			<input type="submit" value="テストをする ＞" />
-		</form>
-		<!-- 採点結果履歴に遷移 -->
-		<form method="post" th:action="@{/history}">
-			<input type="submit" value="過去の採点結果をみる ＞" />
-		</form>
+	<div th:each="user : ${user}">
+		<div th:if="${user.getAdminFlag() == 1}">
+			<!-- 問題一覧へ遷移（※要管理者権限） -->
+			<form method="post" th:action="@{/list}">
+				<input type="submit" value="問題と答えを確認・登録する ＞" />
+			</form>
+		</div>
+	</div>
+	<!-- テストへ遷移 -->
+	<form method="post" th:action="@{/test}">
+		<input type="submit" value="テストをする ＞" />
+	</form>
+	<!-- 採点結果履歴に遷移 -->
+	<form method="post" th:action="@{/history}">
+		<input type="submit" value="過去の採点結果をみる ＞" />
+	</form>
+	<div th:each="user : ${user}">
+		<div th:if="${user.getAdminFlag() == 1}">
+			<!-- ユーザー一覧へ遷移（※要管理者権限） -->
+			<form method="post" th:action="@{/userLists}">
+				<input type="submit" value="ユーザーを追加・編集する ＞">
+			</form>
+		</div>
 	</div>
 </body>
 </html>

@@ -9,4 +9,6 @@ public interface UserRepository {
 
 	public Users identifyUser(String id);
 
+	public Users findByUsersId(int id);
+
 }

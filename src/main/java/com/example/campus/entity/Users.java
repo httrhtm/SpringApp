@@ -5,14 +5,6 @@ import java.util.Collection;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-//Userクラス【UserDetailsを実装するクラス】
-//UserDetails:ユーザー情報を保持するクラス
-//Spring SecurityではUserDetailsというインターフェースが定義されている
-
-//クラスの作成時にすでにoverrideすべき7つのメソッドの雛形できているけど、
-//このクラスは、mybatisから直接生成する形にしたい
-//→テーブル定義「ユーザー情報」が保持しているカラムをこのクラスに定義していく
-//その上で、UserDetailsインターフェースで定義されているメソッドを実装しくいく
 public class Users implements UserDetails {
 
 	private static final long serialVersionUID = -4292831594774687625L;
@@ -22,6 +14,8 @@ public class Users implements UserDetails {
 	private String name;
 	private String password;
 	private int deleteflag;
+	private byte admin_flag;
+
 
 	public long getId() {
 		//idを返す
@@ -38,6 +32,14 @@ public class Users implements UserDetails {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public byte getAdminFlag() {
+		return admin_flag;
+	}
+
+	public void setAdminFlag(byte admin_flag) {
+		this.admin_flag = admin_flag;
 	}
 
 	//UserDetailsに書いてあるメソッドを使うからオーバーライドしないとエラーが出るかも。

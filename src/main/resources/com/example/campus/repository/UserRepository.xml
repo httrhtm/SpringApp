@@ -9,7 +9,7 @@
 	<!--今回利用するステートメントの定義 -->
 	<select id = "identifyUser" parameterType="java.lang.String" resultMap="userDetails">
 	select
-		id, password, name
+		id, password, name, admin_flag
 		from users
 		where id = #{id}
 		and deleteflag = 0
@@ -24,4 +24,9 @@
 		<result property="id" column="id" />
 		<result property="password" column="password" />
 	</resultMap>
+
+	<!-- 指定IDのレコードを取得 -->
+	<select id="findByUsersId" resultType="com.example.campus.entity.Users">
+		select * from users where id = #{id}
+	</select>
 </mapper>
