@@ -6,24 +6,29 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.example.campus.entity.User;
+import com.example.campus.entity.Users;
 import com.example.campus.repository.UserRepository;
 
 @Service //SpringのDIコンテナの管理対象であることを示す
 public class UserDetailsImplService implements UserDetailsService {
 
 	@Autowired //依存性注入の対象であることを示す、UserRepositoryのインスタンス化をDIコンテナ
-	private UserRepository userRepository;
+	private UserRepository repository;
+	Long id;
 
 	@Override
 	public UserDetails loadUserByUsername(String id) throws UsernameNotFoundException {
-		User user = userRepository.identifyUser(id);
+		Users user = repository.identifyUser(id);
 		if(user == null) {
 			throw new UsernameNotFoundException(id + "is not found");
 		} else {
+			this.id = user.getId();
 			return user;
 		}
 
 	}
 
+	public long getId() {
+		return this.id;
+	}
 }

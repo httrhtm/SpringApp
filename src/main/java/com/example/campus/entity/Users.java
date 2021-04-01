@@ -13,7 +13,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 //このクラスは、mybatisから直接生成する形にしたい
 //→テーブル定義「ユーザー情報」が保持しているカラムをこのクラスに定義していく
 //その上で、UserDetailsインターフェースで定義されているメソッドを実装しくいく
-public class User implements UserDetails {
+public class Users implements UserDetails {
 
 	private static final long serialVersionUID = -4292831594774687625L;
 

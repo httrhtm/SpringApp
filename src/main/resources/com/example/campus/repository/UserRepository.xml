@@ -20,7 +20,7 @@
 	type属性にはメソッドの戻り値を指定する＝Userクラス（UserDetails インターフェースの実装クラス）
 	id属性は任意。selectで使う。
 	-->
-	<resultMap type="com.example.campus.entity.User" id ="userDetails">
+	<resultMap type="com.example.campus.entity.Users" id ="userDetails">
 		<result property="id" column="id" />
 		<result property="password" column="password" />
 	</resultMap>

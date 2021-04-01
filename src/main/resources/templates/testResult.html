@@ -25,10 +25,10 @@
 		<p><span sec:authentication="principal.name"></span>さん</p>
 
 		<!-- 問題数と正解数 -->
-		<span th:text="${total}"></span>
+		<p><span th:text="${total}"></span>問中<span th:text="${point}"></span>問正解です。</p>
 
 		<!-- 点数 -->
-		<span></span>
+		<p><span th:text="${score}"></span>点でした。</p>
 	</div>
 
 	<!-- 現在時刻 -->
