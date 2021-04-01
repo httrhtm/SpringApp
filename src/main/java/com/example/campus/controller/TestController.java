@@ -94,6 +94,7 @@ public class TestController {
 					//【条件】correct_answers.answerと入力値が同じ場合（string:equalsメソッド）
 					if(answerList.get(j).getAnswer().equals(array_answer[k])) {
 						point++;
+						break;
 					}
 				}
 			}
