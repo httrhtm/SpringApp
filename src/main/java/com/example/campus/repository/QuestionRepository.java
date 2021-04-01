@@ -18,6 +18,17 @@ public interface QuestionRepository {
 	List<Questions> findAll();
 
 	/**
+	 * 全件取得（ランダム）
+	 * @param 検索結果
+	 */
+	List<Questions> RandomAll();
+
+	/**
+	 * 指定IDのレコードを取得
+	 */
+	Questions findOne(int id);
+
+	/**
 	 * レコードの新規作成
 	 */
 	void create(Questions question);
@@ -26,11 +37,6 @@ public interface QuestionRepository {
 	 * レコードの更新
 	 */
 	void update(Questions questions);
-
-	/**
-	 * 1件取得
-	 */
-	Questions findOne(int id);
 
 	/**
 	 * レコードの削除

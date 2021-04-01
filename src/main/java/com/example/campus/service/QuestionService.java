@@ -19,12 +19,28 @@ public class QuestionService {
     private QuestionRepository repository;
 
     /**
-     * questionsテーブルの全件を取得する
-     * @return questionsテーブル全件
+     * 全件取得
+     * @return 全件
      */
     public List<Questions> findAll() {
     	return repository.findAll();
     }
+
+    /**
+     * 全件取得（ランダム）
+     * @return 全件（ランダム）
+     */
+    public List<Questions> RandomAll() {
+		return repository.RandomAll();
+	}
+
+    /**
+     * 指定IDのレコードを取得
+     * @return 指定IDのレコード
+     */
+	public Questions findOne(int id) {
+		return repository.findOne(id);
+	}
 
     /**
      * レコードを新規作成する
@@ -42,20 +58,11 @@ public class QuestionService {
 	}
 
 	/**
-     * idが一致したレコードを取得する
-     * @return idが一致したレコード
-     */
-	public Questions findOne(int id) {
-		return repository.findOne(id);
-	}
-
-	/**
      * idが一致したレコードを削除する
      */
 	public void delete(Questions questions) {
 		repository.delete(questions);
 
 	}
-
 
 }

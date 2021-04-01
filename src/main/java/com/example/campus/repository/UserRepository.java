@@ -2,11 +2,11 @@ package com.example.campus.repository;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.example.campus.entity.User;
+import com.example.campus.entity.Users;
 
 @Mapper
 public interface UserRepository {
 
-	public User identifyUser(String id);
+	public Users identifyUser(String id);
 
 }

@@ -13,12 +13,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 //このクラスは、mybatisから直接生成する形にしたい
 //→テーブル定義「ユーザー情報」が保持しているカラムをこのクラスに定義していく
 //その上で、UserDetailsインターフェースで定義されているメソッドを実装しくいく
-public class User implements UserDetails {
+public class Users implements UserDetails {
 
 	private static final long serialVersionUID = -4292831594774687625L;
 
 	//インターフェースに書いてない値を代入するための変数を用意する
 	private int id;
+	private String name;
 	private String password;
 	private int deleteflag;
 
@@ -29,6 +30,14 @@ public class User implements UserDetails {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	//UserDetailsに書いてあるメソッドを使うからオーバーライドしないとエラーが出るかも。
