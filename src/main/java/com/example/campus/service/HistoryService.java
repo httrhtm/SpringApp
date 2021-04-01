@@ -1,5 +1,7 @@
 package com.example.campus.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,4 +23,12 @@ public class HistoryService {
 	public void create(Histories histories) {
 		repository.create(histories);
 	}
+
+	 /**
+     * 指定IDのレコードを取得
+     */
+	public List<Histories> findByUsersId(int user_id) {
+		return repository.findByUsersId(user_id);
+	}
+
 }
