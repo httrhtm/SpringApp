@@ -17,7 +17,7 @@ public class UserDetailsImplService implements UserDetailsService {
 	@Autowired //依存性注入の対象であることを示す、UserRepositoryのインスタンス化をDIコンテナ
 	private UserRepository repository;
 	@Autowired
-	HttpSession session;
+	private HttpSession session;
 
 
 	@Override
