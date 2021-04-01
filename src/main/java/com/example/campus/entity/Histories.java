@@ -17,10 +17,10 @@ public class Histories {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getUsers_id() {
+	public int getUsersId() {
 		return users_id;
 	}
-	public void setUsers_id(int users_id) {
+	public void setUsersId(int users_id) {
 		this.users_id = users_id;
 	}
 	public int getPoint() {

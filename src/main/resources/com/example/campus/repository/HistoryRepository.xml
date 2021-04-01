@@ -7,7 +7,7 @@
 <mapper namespace="com.example.campus.repository.HistoryRepository">
 
 	<!-- 新規作成 -->
-	<insert id="create" parameterType="String">
+	<insert id="create" parameterType="int">
 		insert into histories (users_id, point, created_at) values (#{users_id}, #{point}, current_timestamp())
 	</insert>
 </mapper>

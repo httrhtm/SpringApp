@@ -1,5 +1,7 @@
 package com.example.campus.service;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,7 +16,9 @@ public class UserDetailsImplService implements UserDetailsService {
 
 	@Autowired //依存性注入の対象であることを示す、UserRepositoryのインスタンス化をDIコンテナ
 	private UserRepository repository;
-	Long id;
+	@Autowired
+	HttpSession session;
+
 
 	@Override
 	public UserDetails loadUserByUsername(String id) throws UsernameNotFoundException {
@@ -22,13 +26,10 @@ public class UserDetailsImplService implements UserDetailsService {
 		if(user == null) {
 			throw new UsernameNotFoundException(id + "is not found");
 		} else {
-			this.id = user.getId();
+			session.setAttribute("user_id", id);
 			return user;
 		}
 
 	}
 
-	public long getId() {
-		return this.id;
-	}
 }

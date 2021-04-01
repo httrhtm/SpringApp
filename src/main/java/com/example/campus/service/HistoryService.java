@@ -21,5 +21,4 @@ public class HistoryService {
 	public void create(Histories histories) {
 		repository.create(histories);
 	}
-
 }
