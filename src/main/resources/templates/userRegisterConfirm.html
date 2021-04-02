@@ -29,12 +29,12 @@
 		<!-- 管理者 -->
 		管理者権限：
 		<!-- admin_flagが1の場合 -->
-		<th:block th:if="${admin_check == '1'}">
+		<th:block th:if="${admin_check.equals('1')}">
 			<td>あり</td>
 		</th:block>
 
 		<!-- admin_flagが1でない場合 -->
-		<th:block th:unless="${admin_check == '1'}">
+		<th:block th:unless="${admin_check.equals('1')}">
 			<td>なし</td>
 		</th:block>
 		<br>

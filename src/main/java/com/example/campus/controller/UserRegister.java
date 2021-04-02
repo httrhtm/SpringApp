@@ -36,12 +36,10 @@ public class UserRegister {
 			@ModelAttribute("admin_check") String adminCheck,
 			Model model) {
 
-		if(adminCheck != null) {
-			model.addAttribute("admin_check", "1");
-			System.out.println("notnull");
-		} else {
+		if(adminCheck.isEmpty()) {
 			model.addAttribute("admin_check", "0");
-			System.out.println("null");
+		} else {
+			model.addAttribute("admin_check", "1");
 		}
 
 		model.addAttribute("name", name);
