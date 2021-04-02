@@ -41,7 +41,7 @@
 	</insert>
 
 	<!-- 更新 -->
-	<update id="edit" parameterType="com.example.campus.entity.Users">
+	<update id="edit">
 		update users set name = #{name}, password = #{password}, admin_flag = #{admin_flag}, updated_at = current_timestamp() where id = #{id}
 	</update>
 </mapper>

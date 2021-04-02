@@ -47,7 +47,7 @@ public class UserDetailsImplService implements UserDetailsService {
 	}
 
 	public void edit(Users users) {
-		repository.update(users);
+		repository.edit(users);
 
 	}
 

@@ -26,7 +26,6 @@ public class UserEditController {
 	 */
 	@RequestMapping("/userEdit")
 	public String userEdit(@ModelAttribute("id") int id, Model model) {
-		System.out.println(id);
 
 		model.addAttribute("user", userService.findByUsersId(id));
 		return "userEdit";
@@ -44,14 +43,13 @@ public class UserEditController {
 			@ModelAttribute("admin_check") String adminCheck,
 			Model model) {
 
-		System.out.println(id);
-
 		if(adminCheck.isEmpty()) {
 			model.addAttribute("admin_check", "0");
 		} else {
 			model.addAttribute("admin_check", "1");
 		}
 
+		model.addAttribute("id", id);
 		model.addAttribute("name", name);
 		model.addAttribute("pass", pass);
 		model.addAttribute("confirm_pass", confirm_pass);
@@ -69,9 +67,7 @@ public class UserEditController {
 			@ModelAttribute("admin") String str_admin,
 			Users users) {
 
-		byte admin_flag = Byte.parseByte(str_admin);
-
-		System.out.println(id);
+		byte admin_flag = Byte.parseByte(str_admin);;
 
 		users.setId(id);
 		users.setName(name);
