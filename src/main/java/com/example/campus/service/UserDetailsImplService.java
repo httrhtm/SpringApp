@@ -1,5 +1,7 @@
 package com.example.campus.service;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +36,10 @@ public class UserDetailsImplService implements UserDetailsService {
 
 	public Users findByUsersId(int id) {
 		return repository.findByUsersId(id);
+	}
+
+	public List<Users> findAll() {
+		return repository.findAll();
 	}
 
 }

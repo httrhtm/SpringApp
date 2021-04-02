@@ -25,6 +25,11 @@
 		<result property="password" column="password" />
 	</resultMap>
 
+	<!-- 全件取得 -->
+	<select id="findAll" resultType="com.example.campus.entity.Users">
+		select * from users
+	</select>
+
 	<!-- 指定IDのレコードを取得 -->
 	<select id="findByUsersId" resultType="com.example.campus.entity.Users">
 		select * from users where id = #{id}
