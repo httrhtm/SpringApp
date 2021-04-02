@@ -64,7 +64,7 @@ public class UserRegister {
 		users.setPassword(pass);
 		users.setAdminFlag(admin_flag);
 
-//		userService.create(users);
+		userService.create(users);
 		return "redirect:/userLists";
 	}
 
