@@ -39,4 +39,9 @@
 	<insert id="create" parameterType="com.example.campus.entity.Users">
 		insert into users (name, password, admin_flag, created_at, updated_at) values (#{name}, #{password}, #{admin_flag}, current_timestamp(), current_timestamp())
 	</insert>
+
+	<!-- 更新 -->
+	<update id="edit" parameterType="com.example.campus.entity.Users">
+		update users set name = #{name}, password = #{password}, admin_flag = #{admin_flag}, updated_at = current_timestamp() where id = #{id}
+	</update>
 </mapper>
