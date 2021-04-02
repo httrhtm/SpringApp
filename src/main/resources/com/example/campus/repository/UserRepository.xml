@@ -34,4 +34,9 @@
 	<select id="findByUsersId" resultType="com.example.campus.entity.Users">
 		select * from users where id = #{id}
 	</select>
+
+	<!-- 新規作成 -->
+	<insert id="create">
+		insert into users (name, password, admin_flag, created_at, updated_at) values (#{name}, #{password}, #{admin_flag}, current_timestamp(), current_timestamp())
+	</insert>
 </mapper>

@@ -15,4 +15,6 @@ public interface UserRepository {
 
 	public List<Users> findAll();
 
+	public void create(Users users);
+
 }

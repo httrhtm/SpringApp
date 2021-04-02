@@ -16,6 +16,8 @@ public class Users implements UserDetails {
 	private int deleteflag;
 	private byte admin_flag;
 
+	public Users() {
+	}
 
 	public long getId() {
 		//idを返す

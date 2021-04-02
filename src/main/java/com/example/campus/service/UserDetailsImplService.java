@@ -42,4 +42,8 @@ public class UserDetailsImplService implements UserDetailsService {
 		return repository.findAll();
 	}
 
+	public void create(Users users) {
+		repository.create(users);
+	}
+
 }
