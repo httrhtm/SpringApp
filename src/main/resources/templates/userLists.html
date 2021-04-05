@@ -57,7 +57,7 @@
 				</td>
 				<!-- 削除 -->
 				<td>
-					<form method="post" th:action="@{/userDelete}">
+					<form method="post" th:action="@{/userDeleteConfirm}">
 						<input type="hidden" name="id"
 							th:value="${user.getId()}">
 						<input type="submit" value="削除">

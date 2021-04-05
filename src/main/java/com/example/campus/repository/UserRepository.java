@@ -19,4 +19,6 @@ public interface UserRepository {
 
 	public void edit(Users users);
 
+	public void delete(Users users);
+
 }
