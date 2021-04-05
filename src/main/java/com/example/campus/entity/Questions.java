@@ -10,7 +10,6 @@ public class Questions {
 	private Timestamp created_at;
 	private Timestamp updated_at;
 
-
 	public Questions() {
 	}
 	//getter,setterの設定

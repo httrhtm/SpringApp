@@ -16,10 +16,11 @@
 	</div>
 
 	<!-- form -->
-	<form th:method="post" th:action="@{/insert}">
+	<form th:method="post" th:action="@{/insert}" th:object="${registerForm}">
 		<!-- 問題 -->
 		<div class="question">
 			問題： <input readonly type="text" name="question" th:value="${question}" />
+			<span th:if="${#fields.hasErrors()}" th:text="${error.message}" style="color: red">Error message</span>
 		</div>
 
 		<!-- 答え -->

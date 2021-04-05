@@ -3,12 +3,15 @@ package com.example.campus.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.campus.entity.Answers;
 import com.example.campus.entity.Questions;
+import com.example.campus.form.RegisterForm;
 import com.example.campus.service.AnswerService;
 import com.example.campus.service.QuestionService;
 
@@ -30,7 +33,7 @@ public class RegisterController {
 	 */
 	//question
 	@RequestMapping("/register")
-	public String register() {
+	public String register(RegisterForm registerForm) {
 		return "register";
 	}
 
@@ -40,7 +43,17 @@ public class RegisterController {
 	 */
 	//question
 	@PostMapping("/confirm")
-	public String confirm(@ModelAttribute("question") String question, @ModelAttribute("answer") String answer, Model model) {
+	public String confirm(
+			RegisterForm registerForm, BindingResult error,
+			@Validated @ModelAttribute("question") String question,
+			@Validated @ModelAttribute("answer") String answer,
+			Model model) {
+
+		if (error.hasErrors()) {
+            // エラー時の処理
+			return "register";
+        }
+
 		model.addAttribute(question, "question");
 		model.addAttribute(answer, "answer");
 		return "confirm";
@@ -52,7 +65,16 @@ public class RegisterController {
 	 */
 	//question
 	@PostMapping("/insert")
-	public String insert(Questions questions, Answers answers) {
+	public String insert(
+			@Validated Questions questions,
+			@Validated Answers answers,
+			BindingResult error) {
+
+		if (error.hasErrors()) {
+            // エラー時の処理
+			return "register";
+        }
+
 		//insert
 		questionService.create(questions);
 		answerService.create(answers);
