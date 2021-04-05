@@ -32,20 +32,20 @@
 			</tr>
 			<tr th:each="user:${userList}">
 				<!-- ID -->
-				<td><input type=text name="id" th:value="${user.getId()}" /></td>
+				<td><input readonly type=text name="id" th:value="${user.getId()}" /></td>
 
 				<!-- admin_flagが1の場合 -->
 				<th:block th:if="${user.getAdminFlag() == 1}">
-					<td><input type=text name="admin" th:value="管理者" /></td>
+					<td><input readonly type=text name="admin" th:value="管理者" /></td>
 				</th:block>
 
 				<!-- admin_flagが1以外の場合 -->
 				<th:block th:unless="${user.getAdminFlag() == 1}">
-					<td><input type=text name="admin" th:value="一般" /></td>
+					<td><input readonly type=text name="admin" th:value="一般" /></td>
 				</th:block>
 
 				<!-- ユーザー名 -->
-				<td><input type=text name="name" th:value="${user.getName()}" /></td>
+				<td><input readonly type=text name="name" th:value="${user.getName()}" /></td>
 
 				<!-- 編集 -->
 				<td>
