@@ -27,7 +27,7 @@
 
 	<!-- 全件取得 -->
 	<select id="findAll" resultType="com.example.campus.entity.Users">
-		select * from users
+		select * from users WHERE deleteflag = 0
 	</select>
 
 	<!-- 指定IDのレコードを取得 -->
