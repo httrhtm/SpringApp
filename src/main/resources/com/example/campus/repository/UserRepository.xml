@@ -27,7 +27,7 @@
 
 	<!-- 全件取得 -->
 	<select id="findAll" resultType="com.example.campus.entity.Users">
-		select * from users
+		select * from users WHERE deleteflag = 0
 	</select>
 
 	<!-- 指定IDのレコードを取得 -->
@@ -43,5 +43,10 @@
 	<!-- 更新 -->
 	<update id="edit">
 		update users set name = #{name}, password = #{password}, admin_flag = #{admin_flag}, updated_at = current_timestamp() where id = #{id}
+	</update>
+
+	<!-- 論理的削除 -->
+	<update id="delete">
+		update users set deleteflag = 1, deleted_at = current_timestamp() WHERE id = #{id}
 	</update>
 </mapper>

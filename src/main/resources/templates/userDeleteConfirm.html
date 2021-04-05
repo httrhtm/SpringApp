@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>delete confirm</title>
+</head>
+<body>
+	<!-- top, logoutボタン -->
+	<div class="nav">
+		<form method="post" th:action="@{/top}" style="display: inline">
+			<input type="submit" value="top" />
+		</form>
+		<form method="post" th:action="@{/logout}" style="display: inline">
+			<input type="submit" value="logout" />
+		</form>
+	</div>
+
+	<form th:method="POST" th:action="@{/userDelete}">
+		<!-- ID -->
+		ID： <input readonly type="text" name="id" th:value="${user.getId()}" />
+		<br>
+		<!-- ユーザー名 -->
+		ユーザー名： <input readonly type="text" name="name" th:value="${user.getName()}" />
+		<br>
+		<!-- PW -->
+		PW： <input readonly type="password" name="pass" th:value="${user.getPassword()}" />
+		<br>
+		<!-- PW確認 -->
+		PW確認： <input readonly type="password" name="confirm_pass" th:value="${user.getPassword()}" />
+		<br>
+		<!-- 管理者 -->
+		管理者：
+		<!-- admin_flagが1の場合 -->
+		<th:block th:if="${user.getAdminFlag() == 1}">
+			あり
+		</th:block>
+
+		<!-- admin_flagが1でない場合 -->
+		<th:block th:unless="${user.getAdminFlag() == 1}">
+			なし
+		</th:block>
+		<br>
+		<!-- 確認 -->
+		<input type="submit" value="削除" />
+	</form>
+
+	<!-- 戻る -->
+	<form method="get" th:action="@{/userLists}" style="display: inline">
+		<input type="submit" value="戻る" />
+		 <input type="hidden" name="id" th:value="${user.getId()}" />
+	</form>
+
+</body>
+</html>

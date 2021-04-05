@@ -51,4 +51,8 @@ public class UserDetailsImplService implements UserDetailsService {
 
 	}
 
+	public void delete(Users users) {
+		repository.delete(users);
+	}
+
 }
