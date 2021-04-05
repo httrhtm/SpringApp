@@ -1,6 +1,7 @@
 package com.example.campus.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -16,6 +17,8 @@ public class UserRegister {
 	@Autowired
 	private UserDetailsImplService userService;
 
+	@Autowired
+    PasswordEncoder passwordEncoder;
 	/**
 	 * 登録画面に遷移する
 	 * @return 登録画面へのパス
@@ -61,14 +64,11 @@ public class UserRegister {
 		byte admin_flag = Byte.parseByte(str_admin);
 
 		users.setName(name);
-		users.setPassword(pass);
+		users.setPassword(passwordEncoder.encode(pass));
 		users.setAdminFlag(admin_flag);
 
 		userService.create(users);
 		return "redirect:/userLists";
 	}
-
-
-
 
 }
