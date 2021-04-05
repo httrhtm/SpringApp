@@ -53,7 +53,7 @@ public class UserEditController {
 		model.addAttribute("name", name);
 		model.addAttribute("pass", pass);
 		model.addAttribute("confirm_pass", confirm_pass);
-		return "userRegisterConfirm";
+		return "userEditConfirm";
 	}
 
 	/**
