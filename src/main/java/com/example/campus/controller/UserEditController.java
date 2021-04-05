@@ -53,7 +53,7 @@ public class UserEditController {
 		model.addAttribute("name", name);
 		model.addAttribute("pass", pass);
 		model.addAttribute("confirm_pass", confirm_pass);
-		return "userRegisterConfirm";
+		return "userEditConfirm";
 	}
 
 	/**
@@ -67,7 +67,7 @@ public class UserEditController {
 			@ModelAttribute("admin") String str_admin,
 			Users users) {
 
-		byte admin_flag = Byte.parseByte(str_admin);;
+		byte admin_flag = Byte.parseByte(str_admin);
 
 		users.setId(id);
 		users.setName(name);
