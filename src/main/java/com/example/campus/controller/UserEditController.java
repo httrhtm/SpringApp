@@ -67,7 +67,7 @@ public class UserEditController {
 			@ModelAttribute("admin") String str_admin,
 			Users users) {
 
-		byte admin_flag = Byte.parseByte(str_admin);;
+		byte admin_flag = Byte.parseByte(str_admin);
 
 		users.setId(id);
 		users.setName(name);
