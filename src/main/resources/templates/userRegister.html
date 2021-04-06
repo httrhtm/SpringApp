@@ -5,7 +5,7 @@
 <title>user register</title>
 </head>
 <body>
-	<!-- top, logoutボタン -->
+	<!-- nav -->
 	<div class="nav">
 		<form method="post" th:action="@{/top}" style="display: inline">
 			<input type="submit" value="top" />
@@ -14,16 +14,22 @@
 			<input type="submit" value="logout" />
 		</form>
 	</div>
+
+	<!-- error message -->
+	<div th:if="${error_msg != null}">
+		<span th:text="${error_msg}"></span>
+	</div>
+
 	<!-- form -->
 	<form th:method="post" th:action="@{/userRegisterConfirm}" name="form">
 		<!-- ユーザー名 -->
-		ユーザー名： <input type="text" name="name" />
+		ユーザー名： <input type="text" name="name" placeholder="半角英数字のみ" />
 		<br>
 		<!-- PW -->
-		PW： <input type="password" name="pass" />
+		PW： <input type="password" name="pass" placeholder="半角英数字8文字以上" />
 		<br>
 		<!-- PW確認 -->
-		PW確認： <input type="password" name="confirm_pass" />
+		PW確認： <input type="password" name="confirm_pass" placeholder="半角英数字8文字以上" />
 		<br>
 		<!-- 管理者 -->
 		管理者： <input type="checkbox" name="admin_check" />
