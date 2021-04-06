@@ -49,6 +49,7 @@
 	<!-- 戻る -->
 	<form method="get" th:action="@{/userEdit}" style="display: inline">
 		<input type="submit" value="戻る" />
+		<input type="hidden" name="id" th:value="${id}" />
 	</form>
 
 

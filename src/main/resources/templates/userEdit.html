@@ -5,7 +5,7 @@
 <title>user edit</title>
 </head>
 <body>
-	<!-- top, logoutボタン -->
+	<!-- nav -->
 	<div class="nav">
 		<form method="post" th:action="@{/top}" style="display: inline">
 			<input type="submit" value="top" />
@@ -15,13 +15,18 @@
 		</form>
 	</div>
 
+	<!-- error message -->
+	<div th:if="${error_msg != null}">
+		<span th:text="${error_msg}"></span>
+	</div>
+
 	<!-- form -->
 	<form th:method="POST" th:action="@{/userEditConfirm}">
 		<!-- ID -->
 		ID： <input readonly type="text" name="id" th:value="${user.getId()}" />
 		<br>
 		<!-- ユーザー名 -->
-		ユーザー名： <input type="text" name="name" th:value="${user.getName()}" />
+		ユーザー名： <input readonly type="text" name="name" th:value="${user.getName()}" />
 		<br>
 		<!-- PW -->
 		PW： <input type="password" name="pass" th:value="${user.getPassword()}" />
@@ -48,7 +53,6 @@
 	<!-- 戻る -->
 	<form method="get" th:action="@{/userLists}" style="display: inline">
 		<input type="submit" value="戻る" />
-		 <input type="hidden" name="id" th:value="${user.getId()}" />
 	</form>
 
 
