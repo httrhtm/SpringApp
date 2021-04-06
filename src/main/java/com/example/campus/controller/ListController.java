@@ -1,11 +1,14 @@
 package com.example.campus.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.campus.entity.Answers;
+import com.example.campus.entity.Questions;
 import com.example.campus.service.AnswerService;
 import com.example.campus.service.QuestionService;
 
@@ -17,22 +20,22 @@ public class ListController {
     @Autowired
     private AnswerService answerService;
 
-    //Get
-    @GetMapping("/list")
-    public String getList(Model model) {
-        //questionServiceから受け取ったデータをView側に渡す。
-        model.addAttribute("questionList", questionService.findAll());
-        model.addAttribute("answerList", answerService.findAll());
-        return "list";
-    }
+    @RequestMapping("/list")
+    public String list(Model model) {
 
-	//Post
-	@PostMapping("/list")
-	public String postList(Model model) {
-		//questionServiceから受け取ったデータをView側に渡す。
-        model.addAttribute("questionList", questionService.findAll());
-        model.addAttribute("answerList", answerService.findAll());
-		return "list";
-	}
+    	List<Questions> questionList = questionService.findAll();
+    	List<Answers> answerList = answerService.findAll();
+
+    	//questionが1つも登録されていなかった場合
+    	if(questionList.size() == 0) {
+    		return "register";
+
+		} else {
+			model.addAttribute("questionList", questionList);
+			model.addAttribute("answerList", answerList);
+			return "list";
+		}
+
+    }
 
 }
