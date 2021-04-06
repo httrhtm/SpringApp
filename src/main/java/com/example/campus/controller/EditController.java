@@ -1,5 +1,7 @@
 package com.example.campus.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +17,7 @@ import com.example.campus.service.QuestionService;
 public class EditController {
 
 	/**
-     * Questionサービスクラスへのアクセス
+     * サービスクラスへのアクセス
      */
 	@Autowired
 	private QuestionService questionService;
@@ -42,18 +44,54 @@ public class EditController {
 	 * @return 確認画面へのパス
 	 */
 	@PostMapping("/editConfirm")
-	public String confirm(@ModelAttribute("id") String id,
+	public String confirm(@ModelAttribute("id") int id,
 			@ModelAttribute("question") String question,
 			@ModelAttribute("answer_id") String answer_id,
 			@ModelAttribute("questions_id") String questions_id,
-			@ModelAttribute("answer") String answer,
+			HttpServletRequest request,
 			Model model) {
 
+		String[] array_answer = request.getParameterValues("answer");
+
+		//questionの入力値が空の場合
+		if(question.length() == 0){
+			model.addAttribute("error_msg", "問題を入力してください");
+			model.addAttribute("question", questionService.findOne(id));
+			model.addAttribute("answerList", answerService.findAll());
+			return "edit";
+
+		//questionの入力値が500文字より長いの場合
+		}else if(question.length() > 500) {
+			model.addAttribute("error_msg", "問題の文字数が500文字を超えています");
+			model.addAttribute("question", questionService.findOne(id));
+			model.addAttribute("answerList", answerService.findAll());
+			return "edit";
+
+		}else{
+			//answerの配列の長さ分、ループ処理
+			for(int j=0; j<array_answer.length; j++){
+
+				//answerの文字列の長さが0だった場合 = 入力値が空だった場合
+				if(array_answer[j].length() == 0) {
+					model.addAttribute("error_msg", "答えを入力してください");
+					model.addAttribute("question", questionService.findOne(id));
+					model.addAttribute("answerList", answerService.findAll());
+					return "edit";
+
+				//answerが200文字以上だった場合
+				}else if (array_answer[j].length() > 200) {
+					model.addAttribute("error_msg", "答えの文字数が200文字を超えています");
+					model.addAttribute("question", questionService.findOne(id));
+					model.addAttribute("answerList", answerService.findAll());
+					return "edit";
+				}
+			}
+		}
 		model.addAttribute("id", id);
 		model.addAttribute("question", question);
 		model.addAttribute("answer_id", answer_id);
 		model.addAttribute("questions_id", questions_id);
-		model.addAttribute("answer", answer);
+		model.addAttribute("array_answer", array_answer);
 
 		return "editConfirm";
 	}
@@ -78,7 +116,6 @@ public class EditController {
 		answers.setQuestionsId(questions_id);
 		answers.setAnswer(answer);
 
-		//update
 		questionService.update(questions);
 		answerService.update(answers);
 		return "redirect:/list";
