@@ -28,7 +28,7 @@
 		</div>
 
 		<!-- 答え -->
-		<div class="answer">
+		<div class="answer" th:each="answer : ${array_answer}">
 			答え： <input readonly type="text" name="answer" th:value="${answer}" />
 			<!-- idを一緒に渡す -->
 			<input type="hidden" name="answer_id" th:value="${answer_id}" />
@@ -37,7 +37,7 @@
 		</div>
 
 		<!-- 確認 -->
-		<input type="submit" value="編集" style="display: inline" />
+		<input type="submit" value="確認" style="display: inline" />
 	</form>
 
 	<!-- 戻る -->

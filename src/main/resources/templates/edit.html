@@ -15,6 +15,11 @@
 		</form>
 	</div>
 
+	<!-- error message -->
+	<div th:if="${error_msg != null}">
+		<span th:text="${error_msg}"></span>
+	</div>
+
 	<!-- form -->
 	<form th:method="post" th:action="@{/editConfirm}">
 		<!-- 問題番号（※編集不可） -->

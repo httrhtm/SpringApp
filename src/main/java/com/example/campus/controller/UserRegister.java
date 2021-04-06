@@ -48,6 +48,28 @@ public class UserRegister {
 		model.addAttribute("name", name);
 		model.addAttribute("pass", pass);
 		model.addAttribute("confirm_pass", confirm_pass);
+
+		//nameの入力値が空、もしくは半角英数字でなかった場合、ユーザー登録画面に戻す
+		if(name == null || !name.matches("^[A-Za-z0-9]+$")){
+			model.addAttribute("error_msg", "ユーザ名を半角英数字で入力してください");
+			return "userRegister";
+
+		//passwordの入力値が空、もしくは半角英数字でなかった場合、ユーザー登録画面に戻す
+		}else if(pass == null || !pass.matches("^[A-Za-z0-9]+$")){
+			model.addAttribute("error_msg", "パスワードを半角英数字で入力してください");
+			return "userRegister";
+
+		//passwordがpassword_confirmと一致しなかった場合、ユーザー登録画面に戻す
+		}else if(!pass.equals(confirm_pass)) {
+			model.addAttribute("error_msg", "PWとPW確認が一致しませんでした");
+			return "userRegister";
+
+		//passwordの長さが8文字より短かった場合、ユーザー登録画面に戻す
+		}else if(pass.length() < 8) {
+			model.addAttribute("error_msg", "パスワードを8文字以上で入力してください");
+			return "userRegister";
+		}
+
 		return "userRegisterConfirm";
 	}
 
