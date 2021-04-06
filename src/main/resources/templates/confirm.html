@@ -23,7 +23,7 @@
 		</div>
 
 		<!-- 答え -->
-		<div class="answer">
+		<div class="answer" th:each="answer : ${array_answer}">
 			答え： <input readonly type="text" name="answer" th:value="${answer}" />
 		</div>
 

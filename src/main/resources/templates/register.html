@@ -15,11 +15,23 @@
 		</form>
 	</div>
 
+	<!-- error message -->
+	<div th:if="${error_msg != null}">
+		<span th:text="${error_msg}"></span>
+	</div>
+
 	<!-- form -->
-	<form th:method="POST" th:action="@{/confirm}">
+	<form th:method="post" th:action="@{/confirm}">
 		<!-- 問題 -->
 		<div class="question">
 			問題： <input type="text" name="question"  />
+		</div>
+
+		<!-- 答え -->
+		<div class="answer">
+			答え： <input type="text" name="answer" />
+			<!-- 削除（未実装） -->
+			<input type="submit" value="削除*" style="display: inline" />
 		</div>
 
 		<!-- 答え -->
