@@ -8,6 +8,9 @@ function addForm(){
 	//<input id=answerform_i>
 	input_data.id = 'answer_' + i;
 
+	//<input class=input_answer>
+	input_data.className = 'answerForm';
+
 	//<input type=text>
 	input_data.type = 'text';
 
@@ -27,6 +30,8 @@ function addForm(){
 	//<botton id = i>
   	button_data.id = i;
 
+	button_data.className = 'removeBtn';
+
 	//<input type=button>
 	input_data.type = 'text';
 
@@ -34,6 +39,7 @@ function addForm(){
 
 	//innerHTML:既存の要素の内容を新しい内容に置き換えることができる
   	button_data.innerHTML = '削除';
+
 
   	//var input_area = document.getElementById(input_data.id);
 
