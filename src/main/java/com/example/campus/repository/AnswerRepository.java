@@ -20,6 +20,8 @@ public interface AnswerRepository {
 	 */
 	public void create(Answers answers);
 
+	public void insert(Answers answers);
+
 	/**
 	 * 更新
 	 */
