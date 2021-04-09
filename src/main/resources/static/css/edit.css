@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+.nav {
+
+	display: flex;
+}
+
+.question {
+	width: 300px;
+}
+
+.answer_area {
+	display: flex;
+}
+
+.answer {
+	width: 500px;
+}
+
+.answerForm {
+	width: 300px;
+	margin: 5px;
+}
+
+input {
+  	margin: 5px;
+
+}
+
+.removeBtn {
+	margin: 5px
+}

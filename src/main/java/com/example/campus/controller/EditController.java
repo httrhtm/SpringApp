@@ -104,20 +104,31 @@ public class EditController {
 	@PostMapping("/update")
 	public String update(@ModelAttribute("id") int id,
 			@ModelAttribute("question") String question,
-			@ModelAttribute("answer_id") int answer_id,
 			@ModelAttribute("questions_id") int questions_id,
-			@ModelAttribute("answer") String answer,
-			Questions questions, Answers answers) {
+			Questions questions,
+			Answers answers,
+			HttpServletRequest request
+			) {
 
-		//entityにセット
+		String[] str_answer_id = request.getParameterValues("answer_id");
+		String[] array_answer = request.getParameterValues("answer");
+
 		questions.setId(id);
 		questions.setQuestion(question);
-		answers.setId(answer_id);
-		answers.setQuestionsId(questions_id);
-		answers.setAnswer(answer);
 
 		questionService.update(questions);
-		answerService.update(answers);
+
+		int[] answer_ids = new int[str_answer_id.length];
+
+		for (int i = 0; i < array_answer.length; i++) {
+			answer_ids[i] =  Integer.parseInt(str_answer_id[i]);
+
+			answers.setId(answer_ids[i]);
+			answers.setQuestionsId(questions_id);
+			answers.setAnswer(array_answer[i]);
+			answerService.update(answers);
+		}
+
 		return "redirect:/list";
 	}
 

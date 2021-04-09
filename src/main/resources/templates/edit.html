@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>edit</title>
+	<meta charset="UTF-8">
+	<link th:href="@{/css/edit.css}" rel="stylesheet" type="text/css">
+	<script type="text/javascript" th:src="@{/js/edit.js}"></script>
+	<title>edit</title>
 </head>
 <body>
 	<!-- nav -->
@@ -37,7 +39,14 @@
 			<!-- answers.questions_idとquestions.idが一致した場合 -->
 			<div th:if="${answer.getQuestionsId() == question.getId()}">
 				<div class="answer">
-					答え： <input type="text" name="answer" th:value="${answer.getAnswer()}" />
+					<label>答え：</label>
+					<div id="form_area" class="answer">
+
+						<input id="answer_0" class="answerForm" type="text" name="answer" th:value="${answer.getAnswer()}" />
+
+						<!-- 削除 -->
+						<input id="0" class="removeBtn" type="hidden" onclick="deleteBtn(this);" />
+					</div>
 					<!-- correct_answers.idを一緒に渡す -->
 					<input type="hidden" name="answer_id" th:value="${answer.getId()}" />
 					<!-- correct_answers.questions_idを一緒に渡す -->
@@ -46,18 +55,15 @@
 			</div>
 		</div>
 
-		<!-- 削除 -->
-		<input type="button" value="削除" style="display: inline" />
-
 		<!-- 追加 -->
-		<input type="button" value="追加" style="display: inline" />
+		<input type="button" value="追加" onclick="addForm();" />
 
 		<!-- 確認 -->
-		<input type="submit" value="確認" style="display: inline" />
+		<input type="submit" value="確認" />
 	</form>
 
 	<!-- 戻る -->
-	<form method="get" th:action="@{/list}" style="display: inline">
+	<form method="get" th:action="@{/list}" >
 		<input type="submit" value="戻る" />
 	</form>
 

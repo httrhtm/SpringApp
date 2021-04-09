@@ -1,18 +1,14 @@
 var i = 1;
 
 function addForm(){
-	
-	//modelオブジェクトに設定したanswerListの値を取得
-	var answerList = /*[[${answerList}]]*/
-	
-	answerList.forEach(function(value) {
-		console.log(value);
-	});
 
-	//inputを生成
-	var input_data = document.createElement('input').value=answer;
+	//var answerList = /*[[${answerList}]]*/
+	//alert(answerList.get(i).getAnswer);
+	//console.log(answerList.get(i).getAnswer);
 
-	//<input id=answer_i>
+	var input_data = document.createElement('input');
+
+	//<input id=answerform_i>
 	input_data.id = 'answer_' + i;
 
 	//<input class=input_answer>
