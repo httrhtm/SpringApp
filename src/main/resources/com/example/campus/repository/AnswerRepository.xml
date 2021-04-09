@@ -20,6 +20,10 @@
 		update correct_answers set answer = #{answer}, updated_at = current_timestamp() where id = #{id}
 	</update>
 
+	<insert id="insert">
+		insert into correct_answers (questions_id, answer, updated_at) values (#{questions_id}, #{answer}, current_timestamp());
+	</insert>
+
 	<!-- idと一致したレコードを削除 -->
 	<delete id="delete">
 		delete from correct_answers where questions_id = #{questions_id}

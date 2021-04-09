@@ -126,7 +126,7 @@ public class EditController {
 			answers.setId(answer_ids[i]);
 			answers.setQuestionsId(questions_id);
 			answers.setAnswer(array_answer[i]);
-			answerService.update(answers);
+			answerService.insert(answers);
 		}
 
 		return "redirect:/list";
