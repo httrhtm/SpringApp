@@ -49,4 +49,9 @@ public class AnswerService {
 
 	}
 
+	public void insert(Answers answers) {
+		repository.insert(answers);
+
+	}
+
 }

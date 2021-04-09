@@ -46,11 +46,11 @@ public class EditController {
 	@PostMapping("/editConfirm")
 	public String confirm(@ModelAttribute("id") int id,
 			@ModelAttribute("question") String question,
-			@ModelAttribute("answer_id") String answer_id,
 			@ModelAttribute("questions_id") String questions_id,
 			HttpServletRequest request,
 			Model model) {
 
+		String[] answer_id = request.getParameterValues("answer_id");
 		String[] array_answer = request.getParameterValues("answer");
 
 		//questionの入力値が空の場合
@@ -87,6 +87,7 @@ public class EditController {
 				}
 			}
 		}
+
 		model.addAttribute("id", id);
 		model.addAttribute("question", question);
 		model.addAttribute("answer_id", answer_id);
@@ -123,10 +124,20 @@ public class EditController {
 		for (int i = 0; i < array_answer.length; i++) {
 			answer_ids[i] =  Integer.parseInt(str_answer_id[i]);
 
-			answers.setId(answer_ids[i]);
-			answers.setQuestionsId(questions_id);
-			answers.setAnswer(array_answer[i]);
-			answerService.insert(answers);
+			if (answer_ids[i] == 0) {
+
+				answers.setAnswer(array_answer[i]);
+				answers.setQuestionsId(questions_id);
+				answerService.insert(answers);
+
+			} else {
+
+				answers.setId(answer_ids[i]);
+				answers.setQuestionsId(questions_id);
+				answers.setAnswer(array_answer[i]);
+				answerService.update(answers);
+			}
+
 		}
 
 		return "redirect:/list";
