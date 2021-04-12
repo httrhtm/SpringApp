@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>edit confirm</title>
+	<meta charset="UTF-8">
+	<link th:href="@{/css/edit.css}" rel="stylesheet" type="text/css">
+	<title>edit confirm</title>
 </head>
 <body>
 	<!-- nav -->
@@ -18,19 +19,21 @@
 	<!-- form -->
 	<form th:method="post" th:action="@{/update}">
 		<!-- 問題番号 -->
-		<div class="questionNum">
-			問題番号： <input readonly type="text" name="id" th:value="${id}" />
+		<div>
+			<label>問題番号：</label>
+			<input readonly class="num" type="text" name="id" th:value="${id}" />
 		</div>
 
 		<!-- 問題 -->
 		<div class="question">
-			問題： <input readonly type="text" name="question" th:value="${question}" />
+		<label>問題：</label><br>
+			<input readonly class="question" type="text" name="question" th:value="${question}" />
 		</div>
 
 		<!-- 答え -->
 		<label>答え：</label>
 		<div class="answer" th:each="answer : ${array_answer}">
-			<input readonly type="text" name="answer" th:value="${answer}" />
+			<input readonly class="answer" type="text" name="answer" th:value="${answer}" />
 			<!-- idを一緒に渡す -->
 			<div th:each="answer_id : ${answer_id}">
 				<input type="hidden" name="answer_id" th:value="${answer_id}" />

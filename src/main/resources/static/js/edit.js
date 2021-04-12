@@ -6,6 +6,7 @@ function addForm() {
   	input_data.type = 'text';
   	input_data.id = 'answer' + i;
 	input_data.name = 'answer';
+	input_data.className = 'answer';
   	var parent = document.getElementById('form_area');
   	parent.appendChild(input_data);
 

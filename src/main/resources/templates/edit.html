@@ -26,23 +26,27 @@
 	<form th:method="post" th:action="@{/editConfirm}">
 		<!-- 問題番号（※編集不可） -->
 		<div class="questionNum">
-			問題番号： <input readonly type="text" name="id" th:value="${question.getId()}" />
+			<label>問題番号：</label>
+			<input readonly class="num" type="text" name="id" th:value="${question.getId()}" />
 		</div>
 
 		<!-- 問題 -->
 		<div>
-			問題： <input type="text" name="question" th:value="${question.getQuestion()}" />
+			<label>問題：</label><br>
+			<input type="text" class="question" name="question" th:value="${question.getQuestion()}" />
 		</div>
 
 		<!-- 答え -->
-		<div class="answer">
-			<label>答え：</label>
-			<div th:each="answer:${answerList}">
+		<div class="answer_area">
+			<div class="answer_title">
+				<label>答え：</label>
+			</div>
+			<div class="answer_list" th:each="answer:${answerList}">
 				<!-- answers.questions_idとquestions.idが一致した場合 -->
 				<div th:if="${answer.getQuestionsId() == question.getId()}">
-					<div id="form_area" class="answer">
+					<div id="form_area">
 
-						<input id="answer_0" class="answerForm" type="text" name="answer"
+						<input id="answer_0" class="answer" type="text" name="answer"
 							th:value="${answer.getAnswer()}" />
 
 						<!-- 削除 -->
