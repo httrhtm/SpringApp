@@ -32,29 +32,35 @@
 
 		<!-- 問題 -->
 		<div>
-			<label>問題：</label><br>
+			<label>問題：</label>
 			<input type="text" class="question" name="question" th:value="${question.getQuestion()}" />
 		</div>
 
 		<!-- 答え -->
 		<div class="answer_area">
-			<div class="answer_title">
-				<label>答え：</label>
-			</div>
-			<div class="answer_list" th:each="answer:${answerList}">
-				<!-- answers.questions_idとquestions.idが一致した場合 -->
-				<div th:if="${answer.getQuestionsId() == question.getId()}">
-					<div id="form_area">
-						<input id="answer_0" class="answer" type="text" name="answer" th:value="${answer.getAnswer()}" />
+			<label>答え：</label>
+			<div id="form_area" class="answer">
+				<!-- 答え -->
+				<input class="answerForm" type="text" name="answer" />
+					<div class="answer_list" th:each="answer:${answerList}">
+					<!-- answers.questions_idとquestions.idが一致した場合 -->
+					<div th:if="${answer.getQuestionsId() == question.getId()}">
+
+						<!-- 答え（追加ボタン用） -->
+						<input id="answer_0" class="answerForm" type="text" name="answer" th:value="${answer.getAnswer()}" />
 
 						<!-- 削除 -->
-						<input id="0" class="removeBtn" type="button" th:value="削除" onclick="deleteBtn(this);" />
+						<input class="removeBtn" name="delete" type="button" th:value="削除" />
+						<!-- 削除(追加ボタン用) -->
+						<input id="0" class="removeBtn" type="hidden" onclick="deleteBtn(this);" />
+
+						<!-- correct_answers.idを一緒に渡す -->
+						<input type="hidden" name="answer_id" th:value="${answer.getId()}" />
+
+						<!-- correct_answers.questions_idを一緒に渡す -->
+						<input type="hidden" name="questions_id"
+							th:value="${answer.getQuestionsId()}" />
 					</div>
-					<!-- correct_answers.idを一緒に渡す -->
-					<input type="hidden" name="answer_id" th:value="${answer.getId()}" />
-					<!-- correct_answers.questions_idを一緒に渡す -->
-					<input type="hidden" name="questions_id"
-						th:value="${answer.getQuestionsId()}" />
 				</div>
 			</div>
 		</div>

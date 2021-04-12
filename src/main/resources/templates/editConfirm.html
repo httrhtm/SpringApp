@@ -25,23 +25,27 @@
 		</div>
 
 		<!-- 問題 -->
-		<div class="question">
-		<label>問題：</label><br>
+		<div>
+			<label>問題：</label>
 			<input readonly class="question" type="text" name="question" th:value="${question}" />
 		</div>
 
 		<!-- 答え -->
-		<label>答え：</label>
-		<div class="answer" th:each="answer : ${array_answer}">
-			<div th:if="${answer.length() != 0}">
-				<input readonly class="answer" type="text" name="answer" th:value="${answer}" />
+		<div class="answer_area">
+			<label>答え：</label>
+			<div id="form_area" class="answer">
+				<div th:each="answer : ${array_answer}">
+					<div th:if="${answer.length() != 0}">
+						<input readonly class="answerForm" type="text" name="answer" th:value="${answer}" />
+					</div>
+					<!-- idを一緒に渡す -->
+					<div th:each="answer_id : ${answer_id}">
+						<input type="hidden" name="answer_id" th:value="${answer_id}" />
+					</div>
+					<!-- correct_answers.questions_idを一緒に渡す -->
+					<input type="hidden" name="questions_id" th:value="${questions_id}" />
+				</div>
 			</div>
-			<!-- idを一緒に渡す -->
-			<div th:each="answer_id : ${answer_id}">
-				<input type="hidden" name="answer_id" th:value="${answer_id}" />
-			</div>
-			<!-- correct_answers.questions_idを一緒に渡す -->
-			<input type="hidden" name="questions_id" th:value="${questions_id}" />
 		</div>
 
 		<!-- 確認 -->
