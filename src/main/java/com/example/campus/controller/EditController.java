@@ -48,6 +48,7 @@ public class EditController {
 			@ModelAttribute("question") String question,
 			@ModelAttribute("questions_id") String questions_id,
 			HttpServletRequest request,
+			Answers answers,
 			Model model) {
 
 		String[] answer_id = request.getParameterValues("answer_id");
@@ -71,12 +72,23 @@ public class EditController {
 			//answerの配列の長さ分、ループ処理
 			for(int j=0; j<array_answer.length; j++){
 
+				int[] answer_ids = new int[answer_id.length];
+
 				//answerの文字列の長さが0だった場合 = 入力値が空だった場合
 				if(array_answer[j].length() == 0) {
-					model.addAttribute("error_msg", "答えを入力してください");
-					model.addAttribute("question", questionService.findOne(id));
-					model.addAttribute("answerList", answerService.findAll());
-					return "edit";
+
+					answer_ids[j] =  Integer.parseInt(answer_id[j]);
+
+					answers.setId(answer_ids[j]);
+					answerService.deleteById(answers);
+
+					model.addAttribute("id", id);
+					model.addAttribute("question", question);
+					model.addAttribute("answer_id", answer_id);
+					model.addAttribute("questions_id", questions_id);
+					model.addAttribute("array_answer", array_answer);
+
+					return "editConfirm";
 
 				//answerが200文字以上だった場合
 				}else if (array_answer[j].length() > 200) {

@@ -21,13 +21,18 @@
 	</update>
 
 	<insert id="insert">
-		insert into correct_answers (questions_id, answer, updated_at) values (#{questions_id}, #{answer}, current_timestamp())
+		insert into correct_answers (questions_id, answer, created_at, updated_at) values (#{questions_id}, #{answer}, current_timestamp(), current_timestamp())
 		ON DUPLICATE KEY UPDATE id = #{id}
 	</insert>
 
 	<!-- idと一致したレコードを削除 -->
 	<delete id="delete">
 		delete from correct_answers where questions_id = #{questions_id}
+	</delete>
+
+	<!-- idと一致したレコードを削除 -->
+	<delete id="deleteById">
+		delete from correct_answers where id = #{id}
 	</delete>
 
 </mapper>

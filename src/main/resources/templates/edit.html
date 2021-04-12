@@ -45,13 +45,10 @@
 				<!-- answers.questions_idとquestions.idが一致した場合 -->
 				<div th:if="${answer.getQuestionsId() == question.getId()}">
 					<div id="form_area">
-
-						<input id="answer_0" class="answer" type="text" name="answer"
-							th:value="${answer.getAnswer()}" />
+						<input id="answer_0" class="answer" type="text" name="answer" th:value="${answer.getAnswer()}" />
 
 						<!-- 削除 -->
-						<input id="0" class="removeBtn" type="hidden"
-							onclick="deleteBtn(this);" />
+						<input id="0" class="removeBtn" type="button" th:value="削除" onclick="deleteBtn(this);" />
 					</div>
 					<!-- correct_answers.idを一緒に渡す -->
 					<input type="hidden" name="answer_id" th:value="${answer.getId()}" />
