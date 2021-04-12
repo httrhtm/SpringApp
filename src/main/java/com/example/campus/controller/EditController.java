@@ -47,12 +47,21 @@ public class EditController {
 	public String confirm(@ModelAttribute("id") int id,
 			@ModelAttribute("question") String question,
 			@ModelAttribute("questions_id") String questions_id,
+			@ModelAttribute("delete_flag") String delete_flag,
 			HttpServletRequest request,
 			Answers answers,
 			Model model) {
 
 		String[] answer_id = request.getParameterValues("answer_id");
 		String[] array_answer = request.getParameterValues("answer");
+
+		if(array_answer.length == 0) {
+			model.addAttribute("error_msg", "答えを入力してください");
+			model.addAttribute("question", questionService.findOne(id));
+			model.addAttribute("answerList", answerService.findAll());
+			return "edit";
+		}
+
 
 		//questionの入力値が空の場合
 		if(question.length() == 0){

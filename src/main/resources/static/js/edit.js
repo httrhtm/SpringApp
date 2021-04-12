@@ -5,7 +5,7 @@ function addForm() {
   	input_data.type = 'text';
   	input_data.id = 'answer' + i;
 	input_data.name = 'answer';
-	input_data.className = 'answer';
+	input_data.className = 'answerForm';
   	var parent = document.getElementById('form_area');
   	parent.appendChild(input_data);
 
@@ -33,6 +33,6 @@ function deleteBtn(target) {
   var target_id = document.getElementById(target_id);
 
 	//指定したidのフォームを削除する
-  parent.removeChild(input_id);
-  parent.removeChild(target_id);
+  	parent.removeChild(input_id);
+  	parent.removeChild(target_id);
 }
