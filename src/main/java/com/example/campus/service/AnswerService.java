@@ -54,4 +54,8 @@ public class AnswerService {
 
 	}
 
+	public void deleteById(Answers answers) {
+		repository.deleteById(answers);
+	}
+
 }

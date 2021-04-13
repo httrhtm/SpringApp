@@ -32,4 +32,6 @@ public interface AnswerRepository {
 	 */
 	void delete(Answers answers);
 
+	void deleteById(Answers answers);
+
 }
