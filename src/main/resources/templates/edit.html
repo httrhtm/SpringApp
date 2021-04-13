@@ -52,10 +52,10 @@
 			var i = 1 ;
 			;for(var i=0;i<answerList.length;i++){
 				var input_data = document.createElement('input');
-				input_data.innerHTML = 'answerList[i]'
 			  	input_data.type = 'text';
 			  	input_data.id = 'answer' + i;
 				input_data.name = 'answer';
+				input_data.value =answerList[i].answer;
 			  	var parent = document.getElementById('form_area');
 			  	parent.appendChild(input_data);
 
@@ -73,7 +73,7 @@
 			  	button_data.innerHTML = '削除';
 			  	parent.appendChild(button_data);
 
-			  	console.log(answerList[i]);
+			  	console.log(answerList[i].answer);
 
 			}
 
