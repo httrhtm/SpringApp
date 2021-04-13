@@ -71,20 +71,21 @@ public class EditController {
 			//answerの配列の長さ分、ループ処理
 			for(int j=0; j<array_answer.length; j++){
 
-				//answerの文字列の長さが0だった場合 = 入力値が空だった場合
-				if(array_answer[j].length() == 0) {
-					model.addAttribute("error_msg", "答えを入力してください");
-					model.addAttribute("question", questionService.findOne(id));
-					model.addAttribute("answerList", answerService.findAll());
-					return "edit";
-
 				//answerが200文字以上だった場合
-				}else if (array_answer[j].length() > 200) {
+				if (array_answer[j].length() > 200) {
 					model.addAttribute("error_msg", "答えの文字数が200文字を超えています");
 					model.addAttribute("question", questionService.findOne(id));
 					model.addAttribute("answerList", answerService.findAll());
 					return "edit";
 				}
+
+//				//answerの文字列の長さが0だった場合 = 入力値が空だった場合
+//				if(array_answer[j].length() == 0) {
+//					model.addAttribute("error_msg", "答えを入力してください");
+//					model.addAttribute("question", questionService.findOne(id));
+//					model.addAttribute("answerList", answerService.findAll());
+//					return "edit";
+
 			}
 		}
 
