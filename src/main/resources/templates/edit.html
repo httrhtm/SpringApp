@@ -3,7 +3,6 @@
 <head>
 	<meta charset="UTF-8">
 	<link th:href="@{/css/edit.css}" rel="stylesheet" type="text/css">
-	<script type="text/javascript" th:src="@{/js/edit.js}"></script>
 	<title>edit</title>
 </head>
 <body>
@@ -34,29 +33,53 @@
 			問題： <input type="text" name="question" th:value="${question.getQuestion()}" />
 		</div>
 
-		<!-- 答え -->
 		<label>答え：</label>
 		<div id="form_area" class="answer">
-			<div th:each="answer:${answerList}">
-				<!-- answers.questions_idとquestions.idが一致した場合 -->
-				<div th:if="${answer.getQuestionsId() == question.getId()}">
-					<div class="answer_area">
+			<!-- 答え -->
+			<input id="answer_0" class="answerForm" type="hidden" name="answer" />
 
-						<input id="answer_0" class="answerForm" type="text" name="answer"
-							th:value="${answer.getAnswer()}" />
-
-						<!-- 削除 -->
-						<input id="0" class="removeBtn" type="hidden"
-							onclick="deleteBtn(this);" />
-					</div>
-					<!-- correct_answers.idを一緒に渡す -->
-					<input type="hidden" name="answer_id" th:value="${answer.getId()}" />
-					<!-- correct_answers.questions_idを一緒に渡す -->
-					<input type="hidden" name="questions_id"
-						th:value="${answer.getQuestionsId()}" />
-				</div>
-			</div>
+			<!-- 削除 -->
+			<input id="0" class="removeBtn" type="hidden" th:value="削除" onclick="deleteBtn(this);" />
 		</div>
+
+		<!-- JS -->
+		<script type="text/javascript" th:src="@{/js/edit.js}"></script>
+		<script type="text/javascript" th:inline="javascript">
+		/*<![CDATA[*/
+			var answerList = /*[[ ${answerList}]]*/'answerList';
+
+			var answers = [];
+			var i = 1 ;
+			;for(var i=0;i<answerList.length;i++){
+				var input_data = document.createElement('input');
+				input_data.innerHTML = 'answerList[i]'
+			  	input_data.type = 'text';
+			  	input_data.id = 'answer' + i;
+				input_data.name = 'answer';
+			  	var parent = document.getElementById('form_area');
+			  	parent.appendChild(input_data);
+
+			  	var input_data2 = document.createElement('input');
+			  	input_data2.type = 'hidden';
+			  	input_data2.id = 'answer_id' + i;
+				input_data2.name = 'answer_id';
+				input_data2.value = 0;
+			 	parent.appendChild(input_data2);
+
+				var button_data = document.createElement('button');
+			 	button_data.id = i;
+			 	name = 'delete';
+			  	button_data.onclick = function(){deleteBtn(this);}
+			  	button_data.innerHTML = '削除';
+			  	parent.appendChild(button_data);
+
+			  	console.log(answerList[i]);
+
+			}
+
+
+			/*]]>*/
+			</script>
 
 		<!-- 追加 -->
 		<input type="button" value="追加" onclick="addForm();" />
