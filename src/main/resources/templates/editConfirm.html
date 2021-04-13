@@ -28,8 +28,9 @@
 		</div>
 
 		<!-- 答え -->
+		<label>答え：</label>
 		<div class="answer" th:each="answer : ${array_answer}">
-			答え： <input readonly type="text" name="answer" th:value="${answer}" />
+			<input readonly type="text" name="answer" th:value="${answer}" />
 			<!-- idを一緒に渡す -->
 			<div th:each="answer_id : ${answer_id}">
 				<input type="hidden" name="answer_id" th:value="${answer_id}" />

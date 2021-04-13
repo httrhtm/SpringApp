@@ -35,22 +35,25 @@
 		</div>
 
 		<!-- 答え -->
-		<div th:each="answer:${answerList}">
-			<!-- answers.questions_idとquestions.idが一致した場合 -->
-			<div th:if="${answer.getQuestionsId() == question.getId()}">
-				<div class="answer">
-					<label>答え：</label>
-					<div id="form_area" class="answer">
+		<label>答え：</label>
+		<div id="form_area" class="answer">
+			<div th:each="answer:${answerList}">
+				<!-- answers.questions_idとquestions.idが一致した場合 -->
+				<div th:if="${answer.getQuestionsId() == question.getId()}">
+					<div class="answer_area">
 
-						<input id="answer_0" class="answerForm" type="text" name="answer" th:value="${answer.getAnswer()}" />
+						<input id="answer_0" class="answerForm" type="text" name="answer"
+							th:value="${answer.getAnswer()}" />
 
 						<!-- 削除 -->
-						<input id="0" class="removeBtn" type="hidden" onclick="deleteBtn(this);" />
+						<input id="0" class="removeBtn" type="hidden"
+							onclick="deleteBtn(this);" />
 					</div>
 					<!-- correct_answers.idを一緒に渡す -->
 					<input type="hidden" name="answer_id" th:value="${answer.getId()}" />
 					<!-- correct_answers.questions_idを一緒に渡す -->
-					<input type="hidden" name="questions_id" th:value="${answer.getQuestionsId()}" />
+					<input type="hidden" name="questions_id"
+						th:value="${answer.getQuestionsId()}" />
 				</div>
 			</div>
 		</div>
