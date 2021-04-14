@@ -35,12 +35,11 @@
 
 		<label>答え：</label>
 		<div id="form_area" class="answer">
-			<!-- 答え -->
-			<input id="answer_0" class="answerForm" type="hidden" name="answer" />
-
-			<!-- 削除 -->
-			<input id="0" class="removeBtn" type="hidden" th:value="削除" onclick="deleteBtn(this);" />
+		<!-- 答え -->
 		</div>
+
+		<!-- 削除 -->
+		<input id="0" class="removeBtn" type="hidden" th:value="削除" onclick="deleteBtn(this);" />
 
 		<!-- JS -->
 		<script type="text/javascript" th:src="@{/js/edit.js}"></script>
@@ -50,9 +49,10 @@
 			var questionId = /*[[${question.getId()}]]*/ 'questionId';
 
 			var answers = [];
-			var i = 1 ;
 			;for(var i=0;i<answerList.length;i++){
-				console.log(answerList[i]);
+
+				console.log(answerList[i].questionsId);
+
 				if(answerList[i].questionsId === questionId){
 					var input_data = document.createElement('input');
 				  	input_data.type = 'text';
@@ -66,8 +66,15 @@
 				  	input_data2.type = 'hidden';
 				  	input_data2.id = 'answer_id' + i;
 					input_data2.name = 'answer_id';
-					input_data2.value = 0;
+					input_data2.value = answerList[i].id;
 				 	parent.appendChild(input_data2);
+
+				 	var input_data3 = document.createElement('input');
+				  	input_data3.type = 'hidden';
+				  	input_data3.id = 'questions_id' + i;
+					input_data3.name = 'questions_id';
+					input_data3.value = answerList[i].questionsId;
+				 	parent.appendChild(input_data3);
 
 					var button_data = document.createElement('button');
 				 	button_data.id = i;
@@ -75,6 +82,7 @@
 				  	button_data.onclick = function(){deleteBtn(this);}
 				  	button_data.innerHTML = '削除';
 				  	parent.appendChild(button_data);
+
 				}
 			}
 

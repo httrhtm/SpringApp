@@ -48,6 +48,7 @@ public class EditController {
 			@ModelAttribute("question") String question,
 			@ModelAttribute("questions_id") String questions_id,
 			HttpServletRequest request,
+			Answers answers,
 			Model model) {
 
 		String[] answer_id = request.getParameterValues("answer_id");
@@ -72,28 +73,22 @@ public class EditController {
 			for(int j=0; j<array_answer.length; j++){
 
 				//answerが200文字以上だった場合
-				if (array_answer[j].length() > 200) {
+				if(array_answer[j].length() > 200) {
 					model.addAttribute("error_msg", "答えの文字数が200文字を超えています");
 					model.addAttribute("question", questionService.findOne(id));
 					model.addAttribute("answerList", answerService.findAll());
 					return "edit";
-				}
+				} else {
 
-//				//answerの文字列の長さが0だった場合 = 入力値が空だった場合
-//				if(array_answer[j].length() == 0) {
-//					model.addAttribute("error_msg", "答えを入力してください");
-//					model.addAttribute("question", questionService.findOne(id));
-//					model.addAttribute("answerList", answerService.findAll());
-//					return "edit";
+					model.addAttribute("id", id);
+					model.addAttribute("question", question);
+					model.addAttribute("answer_id", answer_id);
+					model.addAttribute("questions_id", questions_id);
+					model.addAttribute("array_answer", array_answer);
+				}
 
 			}
 		}
-
-		model.addAttribute("id", id);
-		model.addAttribute("question", question);
-		model.addAttribute("answer_id", answer_id);
-		model.addAttribute("questions_id", questions_id);
-		model.addAttribute("array_answer", array_answer);
 
 		return "editConfirm";
 	}
@@ -112,6 +107,10 @@ public class EditController {
 			HttpServletRequest request
 			) {
 
+		System.out.println(id);
+		System.out.println(question);
+		System.out.println(questions_id);
+
 		String[] str_answer_id = request.getParameterValues("answer_id");
 		String[] array_answer = request.getParameterValues("answer");
 
@@ -125,7 +124,15 @@ public class EditController {
 		for (int i = 0; i < array_answer.length; i++) {
 			answer_ids[i] =  Integer.parseInt(str_answer_id[i]);
 
-			if (answer_ids[i] == 0) {
+			System.out.println(answer_ids[i]);
+			System.out.println(array_answer[i]);
+
+			if(array_answer[i].isEmpty()) {
+
+				answers.setId(answer_ids[i]);
+				answerService.deleteById(answers);
+
+			} else if (answer_ids[i] == 0) {
 
 				answers.setAnswer(array_answer[i]);
 				answers.setQuestionsId(questions_id);
