@@ -1,6 +1,4 @@
 var i = 1;
-
-var i = 1 ;
 function addForm() {
 	var input_data = document.createElement('input');
   	input_data.type = 'text';
@@ -21,7 +19,6 @@ function addForm() {
  	name = 'delete';
   	button_data.onclick = function(){deleteBtn(this);}
   	button_data.innerHTML = '削除';
-	//var input_area = document.getElementById(input_data.id);
   	parent.appendChild(button_data);
 
   	i++ ;
