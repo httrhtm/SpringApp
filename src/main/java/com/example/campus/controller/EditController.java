@@ -78,17 +78,14 @@ public class EditController {
 					model.addAttribute("question", questionService.findOne(id));
 					model.addAttribute("answerList", answerService.findAll());
 					return "edit";
-				} else {
-
-					model.addAttribute("id", id);
-					model.addAttribute("question", question);
-					model.addAttribute("answer_id", answer_id);
-					model.addAttribute("questions_id", questions_id);
-					model.addAttribute("array_answer", array_answer);
 				}
-
 			}
 		}
+		model.addAttribute("id", id);
+		model.addAttribute("question", question);
+		model.addAttribute("answer_id", answer_id);
+		model.addAttribute("questions_id", questions_id);
+		model.addAttribute("array_answer", array_answer);
 
 		return "editConfirm";
 	}
@@ -107,10 +104,6 @@ public class EditController {
 			HttpServletRequest request
 			) {
 
-		System.out.println(id);
-		System.out.println(question);
-		System.out.println(questions_id);
-
 		String[] str_answer_id = request.getParameterValues("answer_id");
 		String[] array_answer = request.getParameterValues("answer");
 
@@ -124,10 +117,13 @@ public class EditController {
 		for (int i = 0; i < array_answer.length; i++) {
 			answer_ids[i] =  Integer.parseInt(str_answer_id[i]);
 
+			//3つ分取れてる
 			System.out.println(answer_ids[i]);
 			System.out.println(array_answer[i]);
 
 			if(array_answer[i].isEmpty()) {
+
+				System.out.println(answer_ids[i] + "は空です");
 
 				answers.setId(answer_ids[i]);
 				answerService.deleteById(answers);
