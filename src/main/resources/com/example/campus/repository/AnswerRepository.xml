@@ -25,9 +25,14 @@
 		ON DUPLICATE KEY UPDATE id = #{id}
 	</insert>
 
-	<!-- idと一致したレコードを削除 -->
+	<!-- questions_idと一致したレコードを削除 -->
 	<delete id="delete">
 		delete from correct_answers where questions_id = #{questions_id}
+	</delete>
+
+	<!-- idと一致したレコードを削除 -->
+	<delete id="deleteById">
+		delete from correct_answers where id = #{id}
 	</delete>
 
 </mapper>

@@ -28,18 +28,19 @@
 		</div>
 
 		<!-- 答え -->
+		<label>答え：</label>
 		<div class="answer" th:each="answer : ${array_answer}">
-			答え： <input readonly type="text" name="answer" th:value="${answer}" />
-			<!-- idを一緒に渡す -->
-			<div th:each="answer_id : ${answer_id}">
-				<input type="hidden" name="answer_id" th:value="${answer_id}" />
-			</div>
-			<!-- correct_answers.questions_idを一緒に渡す -->
-			<input type="hidden" name="questions_id" th:value="${questions_id}" />
+			<input readonly type="text" name="answer" th:value="${answer}" />
 		</div>
+		<!-- idを一緒に渡す -->
+		<div th:each="answer_id : ${answer_id}">
+			<input type="hidden" name="answer_id" th:value="${answer_id}" />
+		</div>
+		<!-- correct_answers.questions_idを一緒に渡す -->
+		<input type="hidden" name="questions_id" th:value="${questions_id}" />
 
-		<!-- 確認 -->
-		<input type="submit" value="確認" style="display: inline" />
+		<!-- 更新 -->
+		<input type="submit" value="更新" style="display: inline" />
 	</form>
 
 	<!-- 戻る -->
