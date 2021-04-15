@@ -28,13 +28,9 @@ function deleteBtn(target) {
 	var target_id = target.id;
   	var parent = document.getElementById('form_area');
 	var input_id = document.getElementById('answer' + target_id);
- 	var answer_id = document.getElementById('answer_id' + target_id);
- 	var questions_id = document.getElementById('questions_id' + target_id);
+	input_id.value = "";
   	var target_id = document.getElementById(target_id);
 
-	//指定したidのフォームを削除する
-  	parent.removeChild(input_id);
-	parent.removeChild(answer_id);
-	parent.removeChild(questions_id);
-  	parent.removeChild(target_id);
+	parent.appendChild(input_id);
+	parent.appendChild(target_id);
 }
